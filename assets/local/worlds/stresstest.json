@@ -1,0 +1,201 @@
+{
+scl: 0.02
+sizeX: 2
+sizeY: 2
+loadScript: trigger (getobject "spawn")
+viewport: {
+	rd: 2
+	x: 200
+	y: 258.6232
+	zoom: 0.5
+	focus: player
+}
+chunks: [
+	[
+		{
+			g: {
+				r: floor
+				c: [
+					{
+						id: dungeonWall9
+						i: 0
+					}
+					{
+						id: dungeonWall9
+						i: 21
+					}
+					{
+						id: dungeonWall9
+						i: 7
+					}
+					{
+						id: dungeonWall9
+						i: 18
+					}
+					{
+						id: dungeonWall9
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall5
+					addr: spawn
+					x: 146.56248
+					y: 227.49998
+					change: {
+						yOff: -100.06523
+						trigger: {
+							scr: "if ($event == onkey) {\n   spawnitem = {\n      spawnItem $0 $1 $2 0 1;\n  };\n   spawns = (getobjects spawn);\n   for i 300 {\n      list = [iron_nugget];\n      for j (length $spawns) {\n         pos = (getmeta $spawns[$j] pos);\n         call $spawnitem $list[0] (get $pos x) (get $pos y);\n      };\n      wait 100;\n   };\n};"
+							messageText: Spawn Items
+							keys: [ 34 ]
+						}
+					}
+				}
+			]
+			g: {
+				r: floor
+				c: [
+					{
+						id: dungeonWall9
+						i: 20
+					}
+					{
+						id: dungeonWall9
+						i: 13
+					}
+					{
+						id: dungeonWall9
+						i: 24
+					}
+				]
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: floor
+				c: [
+					{
+						id: dungeonWall9
+						i: 5
+					}
+					{
+						id: dungeonWall9
+						i: 17
+					}
+					{
+						id: dungeonWall9
+						i: 9
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall5
+					addr: spawn
+					x: 271.25
+					y: 231.37483
+					change: {
+						yOff: -100.06523
+						trigger: {
+							scr: "if ($event == onkey) {\n   spawnitem = {\n      spawnItem $0 $1 $2 0 1;\n  };\n   spawn = (getobject spawn);\n   pos = (getmeta $spawn pos);\n   for i 300 {\n      list = [iron_nugget];\n      call $spawnitem $list[0] (get $pos x) (get $pos y);\n      wait 100;\n   };\n};"
+							messageText: Spawn Items
+							keys: [ 34 ]
+						}
+					}
+				}
+				{
+					id: EntityShell
+					addr: player
+					x: 221.19014
+					y: 258.62338
+					behaviors: [
+						{
+							classPath: com.mygdx.entities.Entity
+							id: data
+							persistent: [
+								{
+									T: BOOL
+									N: barVisible
+								}
+								{
+									T: INT
+									N: health
+									I: 999999
+								}
+								{
+									T: INT
+									N: maxHealth
+									I: 999999
+								}
+								{
+									T: INT
+									N: barType
+								}
+								{
+									T: FLOAT
+									N: sScale
+									F: 1
+								}
+								{
+									T: FLOAT
+									N: sOffset
+								}
+							]
+						}
+						{
+							classPath: com.mygdx.entities.Player
+							id: entity
+							persistent: [
+								{
+									T: FLOAT
+									N: maxSpeed
+									F: 2.5
+								}
+							]
+						}
+						{
+							classPath: com.mygdx.behavior.KeyTrigger
+							id: trigger
+						}
+					]
+					change: {
+						yOff: 5.995636
+						fixtures: [
+							{
+								yOff: -10
+								width: 20
+								height: 20
+							}
+						]
+						fixed: false
+						size: {
+							x: 40
+							y: 40
+						}
+						fixedRotation: true
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+			]
+			g: {
+				r: floor
+				c: [
+					{
+						id: dungeonWall9
+						i: 6
+					}
+				]
+			}
+		}
+	]
+]
+}

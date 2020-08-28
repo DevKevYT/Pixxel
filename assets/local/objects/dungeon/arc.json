@@ -1,0 +1,8 @@
+{
+  "id": "arc-front",
+  "texturePath": "*/arc-front.png",
+  "size": {
+    "x": -2,
+    "y": 0
+  }
+}

@@ -1,0 +1,52 @@
+gameui.png
+size: 100, 100
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+healthbar-background
+  rotate: false
+  xy: 1, 15
+  size: 11, 6
+  split: 1, 1, 1, 1
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+healthbar-player
+  rotate: false
+  xy: 14, 16
+  size: 4, 4
+  split: 0, 3, 0, 0
+  orig: 4, 0
+  offset: 0, 0
+  index: -1
+healthbar-enemy
+  rotate: false
+  xy: 19, 16
+  size: 4, 4
+  split: 0, 3, 0, 0
+  orig: 4, 0
+  offset: 0, 0
+  index: -1
+entity-shadow
+  rotate: false
+  xy: 18, 2
+  size: 25, 14
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+key-progressbar-bg
+  rotate: false
+  xy: 1, 6
+  size: 7, 8
+  split: 2, 2, 2, 2
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+key-progressbar-fg
+  rotate: false
+  xy: 9, 7
+  size: 4, 6
+  split: 1, 2, 0, 0
+  orig: 0, 0
+  offset: 0, 0
+  index: -1

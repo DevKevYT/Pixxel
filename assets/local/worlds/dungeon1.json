@@ -1,0 +1,5260 @@
+{
+scl: 0.02
+sizeX: 8
+sizeY: 8
+ambient: 0.6
+loadScript: "dialog <{frames:[{text:{text:\"Thank you for watching!\"}}]}>"
+viewport: {
+	rd: 2
+	x: 1032.5052
+	y: 862.78265
+	zoom: 0.4
+	focus: player
+	edge: false
+}
+grapth: [
+	{
+		x: 138.02701
+		y: 885.39343
+		index: 0
+	}
+	{
+		x: 138.38463
+		y: 804.7784
+		index: 1
+	}
+	{
+		x: 62.56755
+		y: 708.3645
+		index: 2
+	}
+	{
+		x: 62.925182
+		y: 772.37036
+		index: 3
+	}
+	{
+		x: 124.43719
+		y: 709.17474
+		index: 4
+	}
+	{
+		x: 61.494648
+		y: 650.02997
+		index: 5
+	}
+	{
+		x: 128.01344
+		y: 652.0555
+		index: 6
+	}
+	{
+		x: 180.94237
+		y: 653.2708
+		index: 7
+	}
+	{
+		x: 180.69989
+		y: 742.05066
+		index: 8
+	}
+	{
+		x: 174.50508
+		y: 773.1806
+		index: 9
+	}
+	{
+		x: 124.43719
+		y: 709.17474
+		index: 10
+	}
+	{
+		x: 62.56755
+		y: 708.3645
+		index: 11
+	}
+	{
+		x: 123.3643
+		y: 769.9398
+		index: 12
+	}
+	{
+		x: 660
+		y: 900
+		index: 13
+	}
+	{
+		x: 660
+		y: 820
+		index: 14
+	}
+	{
+		x: 631.6985
+		y: 661.71783
+		index: 15
+	}
+	{
+		x: 740
+		y: 660
+		index: 16
+	}
+	{
+		x: 735.65094
+		y: 734.2117
+		index: 17
+	}
+	{
+		x: 822.90094
+		y: 729.7117
+		index: 18
+	}
+	{
+		x: 820
+		y: 660
+		index: 19
+	}
+	{
+		x: 900
+		y: 660
+		index: 20
+	}
+	{
+		x: 900
+		y: 740
+		index: 21
+	}
+	{
+		x: 980
+		y: 740
+		index: 22
+	}
+	{
+		x: 980
+		y: 660
+		index: 23
+	}
+	{
+		x: 1060
+		y: 740
+		index: 24
+	}
+	{
+		x: 1060
+		y: 660
+		index: 25
+	}
+	{
+		x: 1100
+		y: 660
+		index: 26
+	}
+	{
+		x: 1100
+		y: 740
+		index: 27
+	}
+	{
+		x: 1100
+		y: 900
+		index: 28
+	}
+	{
+		x: 1100
+		y: 820
+		index: 29
+	}
+	{
+		x: 1020
+		y: 820
+		index: 30
+	}
+	{
+		x: 1020.2778
+		y: 900.4115
+		index: 31
+	}
+	{
+		x: 940
+		y: 900
+		index: 32
+	}
+	{
+		x: 940
+		y: 820
+		index: 33
+	}
+	{
+		x: 860
+		y: 900
+		index: 34
+	}
+	{
+		x: 780
+		y: 900
+		index: 35
+	}
+	{
+		x: 780
+		y: 820
+		index: 36
+	}
+	{
+		x: 694.6984
+		y: 805.34296
+		index: 37
+	}
+	{
+		x: 700
+		y: 900
+		index: 38
+	}
+	{
+		x: 822.8313
+		y: 821.1111
+		index: 39
+	}
+	{
+		x: 888.58124
+		y: 835.2703
+		index: 40
+	}
+	{
+		x: 822.8313
+		y: 821.1111
+		index: 41
+	}
+	{
+		x: 979.0789
+		y: 790.5871
+		index: 42
+	}
+	{
+		x: 736.3235
+		y: 806.4679
+		index: 43
+	}
+	{
+		x: 736.3235
+		y: 806.4679
+		index: 44
+	}
+	{
+		x: 736.3235
+		y: 806.4679
+		index: 45
+	}
+	{
+		x: 735.65094
+		y: 734.2117
+		index: 46
+	}
+	{
+		x: 822.90094
+		y: 729.7117
+		index: 47
+	}
+	{
+		x: 1020.6628
+		y: 980.1557
+		index: 48
+	}
+	{
+		x: 1020.6628
+		y: 980.1557
+		index: 49
+	}
+	{
+		x: 824.0046
+		y: 979.4087
+		index: 50
+	}
+	{
+		x: 901.6413
+		y: 980.87354
+		index: 51
+	}
+	{
+		x: 903.10614
+		y: 1051.9185
+		index: 52
+	}
+	{
+		x: 1011.5046
+		y: 1059.2427
+		index: 53
+	}
+	{
+		x: 823.27216
+		y: 1021.88916
+		index: 54
+	}
+	{
+		x: 883.33075
+		y: 1018.9595
+		index: 55
+	}
+	{
+		x: 1135.2838
+		y: 983.0708
+		index: 56
+	}
+	{
+		x: 1132.3541
+		y: 1054.8481
+		index: 57
+	}
+	{
+		x: 1102.3248
+		y: 1056.313
+		index: 58
+	}
+	{
+		x: 1091.3385
+		y: 1015.29736
+		index: 59
+	}
+	{
+		x: 1034.942
+		y: 1017.4946
+		index: 60
+	}
+	{
+		x: 180.69989
+		y: 742.05066
+		index: 61
+	}
+	{
+		x: 658.69836
+		y: 737.84296
+		index: 62
+	}
+	{
+		x: 694.6984
+		y: 805.34296
+		index: 63
+	}
+	{
+		x: 736.3235
+		y: 806.4679
+		index: 64
+	}
+	{
+		x: 632.8235
+		y: 585.59283
+		index: 65
+	}
+	{
+		x: 631.6985
+		y: 661.71783
+		index: 66
+	}
+	{
+		x: 714.1985
+		y: 588.21783
+		index: 67
+	}
+	{
+		x: 804.1985
+		y: 584.8429
+		index: 68
+	}
+]
+connections: [
+	{
+		i1: 5
+		i2: 6
+		cost: 76.720764
+	}
+	{
+		i1: 6
+		i2: 7
+		cost: 87.70741
+	}
+	{
+		i1: 7
+		i2: 8
+		cost: 100.26323
+	}
+	{
+		i1: 8
+		i2: 4
+		cost: 82.018906
+	}
+	{
+		i1: 4
+		i2: 6
+		cost: 85.600945
+	}
+	{
+		i1: 5
+		i2: 2
+		cost: 94.42989
+	}
+	{
+		i1: 2
+		i2: 4
+		cost: 85.01489
+	}
+	{
+		i1: 4
+		i2: 12
+		cost: 83.29472
+	}
+	{
+		i1: 2
+		i2: 3
+		cost: 79.46091
+	}
+	{
+		i1: 3
+		i2: 12
+		cost: 100.6849
+	}
+	{
+		i1: 8
+		i2: 9
+		cost: 82.65798
+	}
+	{
+		i1: 9
+		i2: 12
+		cost: 89.1267
+	}
+	{
+		i1: 12
+		i2: 1
+		cost: 88.214645
+	}
+	{
+		i1: 1
+		i2: 9
+		cost: 84.76161
+	}
+	{
+		i1: 1
+		i2: 0
+		cost: 83.25879
+	}
+	{
+		i1: 13
+		i2: 14
+		cost: 88.25568
+	}
+	{
+		i1: 15
+		i2: 16
+		cost: 102.27587
+	}
+	{
+		i1: 16
+		i2: 19
+		cost: 85.52389
+	}
+	{
+		i1: 19
+		i2: 20
+		cost: 79.93248
+	}
+	{
+		i1: 20
+		i2: 23
+		cost: 83.74312
+	}
+	{
+		i1: 23
+		i2: 25
+		cost: 92.591896
+	}
+	{
+		i1: 25
+		i2: 26
+		cost: 91.98851
+	}
+	{
+		i1: 26
+		i2: 27
+		cost: 94.9804
+	}
+	{
+		i1: 27
+		i2: 24
+		cost: 93.29068
+	}
+	{
+		i1: 24
+		i2: 25
+		cost: 89.09405
+	}
+	{
+		i1: 24
+		i2: 22
+		cost: 98.95564
+	}
+	{
+		i1: 22
+		i2: 23
+		cost: 97.88982
+	}
+	{
+		i1: 22
+		i2: 21
+		cost: 78.16025
+	}
+	{
+		i1: 21
+		i2: 20
+		cost: 87.90634
+	}
+	{
+		i1: 21
+		i2: 18
+		cost: 102.423035
+	}
+	{
+		i1: 18
+		i2: 19
+		cost: 99.49884
+	}
+	{
+		i1: 18
+		i2: 17
+		cost: 80.3323
+	}
+	{
+		i1: 17
+		i2: 16
+		cost: 91.173
+	}
+	{
+		i1: 14
+		i2: 37
+		cost: 73.37293
+	}
+	{
+		i1: 37
+		i2: 38
+		cost: 85.23069
+	}
+	{
+		i1: 38
+		i2: 13
+		cost: 79.96184
+	}
+	{
+		i1: 38
+		i2: 35
+		cost: 89.90656
+	}
+	{
+		i1: 35
+		i2: 36
+		cost: 95.900215
+	}
+	{
+		i1: 36
+		i2: 37
+		cost: 85.46404
+	}
+	{
+		i1: 37
+		i2: 17
+		cost: 88.89377
+	}
+	{
+		i1: 34
+		i2: 35
+		cost: 79.24001
+	}
+	{
+		i1: 34
+		i2: 32
+		cost: 93.91729
+	}
+	{
+		i1: 32
+		i2: 33
+		cost: 82.5408
+	}
+	{
+		i1: 33
+		i2: 30
+		cost: 90.04497
+	}
+	{
+		i1: 30
+		i2: 31
+		cost: 80.877235
+	}
+	{
+		i1: 31
+		i2: 32
+		cost: 102.3975
+	}
+	{
+		i1: 31
+		i2: 28
+		cost: 84.96992
+	}
+	{
+		i1: 28
+		i2: 29
+		cost: 86.490364
+	}
+	{
+		i1: 29
+		i2: 30
+		cost: 76.45345
+	}
+	{
+		i1: 29
+		i2: 27
+		cost: 82.90051
+	}
+	{
+		i1: 24
+		i2: 29
+		cost: 80.676605
+	}
+	{
+		i1: 22
+		i2: 33
+		cost: 85.46427
+	}
+	{
+		i1: 33
+		i2: 21
+		cost: 86.876564
+	}
+	{
+		i1: 18
+		i2: 39
+		cost: 91.543045
+	}
+	{
+		i1: 36
+		i2: 39
+		cost: 86.06996
+	}
+	{
+		i1: 39
+		i2: 40
+		cost: 86.5871
+	}
+	{
+		i1: 21
+		i2: 40
+		cost: 92.69135
+	}
+	{
+		i1: 40
+		i2: 33
+		cost: 82.64634
+	}
+	{
+		i1: 40
+		i2: 34
+		cost: 90.13789
+	}
+	{
+		i1: 34
+		i2: 39
+		cost: 85.57794
+	}
+	{
+		i1: 38
+		i2: 36
+		cost: 92.83474
+	}
+	{
+		i1: 37
+		i2: 35
+		cost: 87.21445
+	}
+	{
+		i1: 35
+		i2: 39
+		cost: 81.6279
+	}
+	{
+		i1: 40
+		i2: 32
+		cost: 75.696304
+	}
+	{
+		i1: 33
+		i2: 31
+		cost: 89.90858
+	}
+	{
+		i1: 32
+		i2: 30
+		cost: 93.16648
+	}
+	{
+		i1: 30
+		i2: 28
+		cost: 83.62932
+	}
+	{
+		i1: 31
+		i2: 29
+		cost: 82.52489
+	}
+	{
+		i1: 24
+		i2: 23
+		cost: 87.75226
+	}
+	{
+		i1: 22
+		i2: 25
+		cost: 92.1818
+	}
+	{
+		i1: 21
+		i2: 23
+		cost: 102.94485
+	}
+	{
+		i1: 22
+		i2: 20
+		cost: 81.84347
+	}
+	{
+		i1: 22
+		i2: 42
+		cost: 98.88258
+	}
+	{
+		i1: 42
+		i2: 33
+		cost: 91.667946
+	}
+	{
+		i1: 42
+		i2: 30
+		cost: 86.10307
+	}
+	{
+		i1: 21
+		i2: 19
+		cost: 95.21094
+	}
+	{
+		i1: 20
+		i2: 18
+		cost: 91.05515
+	}
+	{
+		i1: 16
+		i2: 18
+		cost: 80.44804
+	}
+	{
+		i1: 17
+		i2: 19
+		cost: 83.52246
+	}
+	{
+		i1: 17
+		i2: 43
+		cost: 91.11632
+	}
+	{
+		i1: 43
+		i2: 36
+		cost: 84.78427
+	}
+	{
+		i1: 37
+		i2: 43
+		cost: 88.73322
+	}
+	{
+		i1: 15
+		i2: 17
+		cost: 88.739975
+	}
+	{
+		i1: 48
+		i2: 31
+		cost: 42.15754
+	}
+	{
+		i1: 48
+		i2: 53
+		cost: 44.290745
+	}
+	{
+		i1: 53
+		i2: 52
+		cost: 41.39965
+	}
+	{
+		i1: 52
+		i2: 51
+		cost: 41.610626
+	}
+	{
+		i1: 51
+		i2: 48
+		cost: 41.16729
+	}
+	{
+		i1: 51
+		i2: 53
+		cost: 40.526173
+	}
+	{
+		i1: 52
+		i2: 48
+		cost: 38.189217
+	}
+	{
+		i1: 51
+		i2: 50
+		cost: 40.885174
+	}
+	{
+		i1: 52
+		i2: 55
+		cost: 51.93472
+	}
+	{
+		i1: 54
+		i2: 55
+		cost: 45.955288
+	}
+	{
+		i1: 54
+		i2: 50
+		cost: 52.31133
+	}
+	{
+		i1: 54
+		i2: 51
+		cost: 31.822922
+	}
+	{
+		i1: 55
+		i2: 51
+		cost: 35.216507
+	}
+	{
+		i1: 50
+		i2: 55
+		cost: 43.407917
+	}
+	{
+		i1: 48
+		i2: 56
+		cost: 40.76305
+	}
+	{
+		i1: 56
+		i2: 57
+		cost: 50.146717
+	}
+	{
+		i1: 57
+		i2: 58
+		cost: 50.670204
+	}
+	{
+		i1: 53
+		i2: 60
+		cost: 42.93351
+	}
+	{
+		i1: 60
+		i2: 59
+		cost: 49.311577
+	}
+	{
+		i1: 59
+		i2: 58
+		cost: 40.14453
+	}
+	{
+		i1: 59
+		i2: 56
+		cost: 33.7029
+	}
+	{
+		i1: 57
+		i2: 59
+		cost: 45.762672
+	}
+	{
+		i1: 58
+		i2: 56
+		cost: 40.762733
+	}
+	{
+		i1: 59
+		i2: 48
+		cost: 46.111877
+	}
+	{
+		i1: 60
+		i2: 48
+		cost: 43.61638
+	}
+	{
+		i1: 60
+		i2: 56
+		cost: 41.488617
+	}
+	{
+		i1: 14
+		i2: 62
+		cost: 37.946846
+	}
+	{
+		i1: 62
+		i2: 15
+		cost: 39.54576
+	}
+	{
+		i1: 62
+		i2: 17
+		cost: 40.18525
+	}
+	{
+		i1: 68
+		i2: 19
+		cost: 42.754402
+	}
+	{
+		i1: 68
+		i2: 67
+		cost: 34.93497
+	}
+	{
+		i1: 67
+		i2: 16
+		cost: 37.173798
+	}
+	{
+		i1: 16
+		i2: 68
+		cost: 38.921738
+	}
+	{
+		i1: 67
+		i2: 19
+		cost: 37.981285
+	}
+	{
+		i1: 65
+		i2: 67
+		cost: 43.77311
+	}
+	{
+		i1: 65
+		i2: 15
+		cost: 42.21307
+	}
+	{
+		i1: 65
+		i2: 16
+		cost: 48.895172
+	}
+	{
+		i1: 15
+		i2: 67
+		cost: 50.34245
+	}
+]
+chunks: [
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall7
+					x: 59.999996
+					y: 580
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall8
+					x: 19.999998
+					y: 580
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall7
+					x: 180
+					y: 500
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 140
+					y: 500
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 100
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall3
+					x: 100
+					y: 580
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 180.02345
+					y: 557.49615
+					change: {}
+				}
+				{
+					id: dungeonWall19
+					x: 139.97168
+					y: 579.8816
+					change: {}
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 580
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 59.999996
+					y: 580
+					change: {}
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall5
+						i: 20
+					}
+					{
+						id: dungeonWall5
+						i: 21
+					}
+					{
+						id: dungeonWall8
+						i: 12
+					}
+					{
+						id: dungeonWall12
+						i: 22
+					}
+					{
+						id: dungeonWall13
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall
+					x: 19.999998
+					y: 780
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall
+					x: 19.999998
+					y: 739.99994
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall
+					x: 19.999998
+					y: 700
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall
+					x: 19.999998
+					y: 660
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall
+					x: 19.999998
+					y: 620
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall0
+					x: 100
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall3
+					x: 100
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall4
+					x: 140
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 780
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 739.99994
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 700
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 660
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 620
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 140
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 180
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 99.95959
+					y: 605.1177
+					change: {}
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall9
+						i: 1
+					}
+					{
+						id: dungeonWall9
+						i: 16
+					}
+					{
+						id: dungeonWall1
+						i: 21
+					}
+					{
+						id: dungeonWall9
+						i: 22
+					}
+					{
+						id: dungeonWall1
+						i: 13
+					}
+					{
+						id: dungeonWall9
+						i: 4
+					}
+					{
+						id: dungeonWall1
+						i: 9
+					}
+					{
+						id: dungeonWall9
+						i: 14
+					}
+					{
+						id: dungeonWall1
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall3
+					x: 19.999998
+					y: 820
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: arc-front
+					x: 139.95331
+					y: 834.8245
+					change: {
+						yOff: 24.037048
+					}
+				}
+				{
+					id: dungeonWall
+					x: 180
+					y: 859.99994
+					change: {
+						yOff: 32.9292
+					}
+				}
+				{
+					id: dungeonWall
+					x: 180
+					y: 900
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 180
+					y: 939.99994
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 180
+					y: 980
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 100
+					y: 980
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 100
+					y: 939.99994
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 100
+					y: 900
+					change: {}
+				}
+				{
+					id: dungeonWall31
+					x: 97.46166
+					y: 817.49994
+					change: {
+						yOff: -10.9036255
+					}
+				}
+				{
+					id: dungeonWall
+					x: 100
+					y: 859.99994
+					change: {
+						yOff: 31.277283
+					}
+				}
+				{
+					id: Hitbox-Small
+					x: 180
+					y: 820
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 100
+					y: 820
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 59.999996
+					y: 820
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 19.999998
+					y: 820
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 141.6797
+					y: 816.4309
+					rotation: -180
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall0
+						i: 0
+					}
+					{
+						id: dungeonWall7
+						i: 1
+					}
+					{
+						id: dungeonWall4
+						i: 2
+					}
+					{
+						id: dungeonWall5
+						i: 3
+					}
+					{
+						id: dungeonWall5
+						i: 8
+					}
+					{
+						id: dungeonWall5
+						i: 13
+					}
+					{
+						id: dungeonWall5
+						i: 18
+					}
+					{
+						id: dungeonWall5
+						i: 23
+					}
+					{
+						id: dungeonWall0
+						i: 4
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall
+					x: 220
+					y: 580
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 220
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall12
+					x: 220
+					y: 500
+					change: {}
+				}
+				{
+					id: floor
+					addr: tutorial
+					x: 312.26334
+					y: 553.0039
+					change: {
+						trigger: {
+							scr: "if ($event == invoke) {\n   dialog <\n      {frames:[{text:{text:\"Welcome to a new video!\"}},\n               {text:{text:\"In this video, I will showcase what the engine is all capable off!\"}}]}\n   >;\n};"
+						}
+						size: {
+							x: 19.400635
+							y: 17.1523
+						}
+					}
+				}
+			]
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall
+					x: 220
+					y: 660
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall3
+					x: 220
+					y: 700
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall7
+					x: 260
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 300
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 340
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 380
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 220
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall31
+					x: 300
+					y: 777.4437
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 259.909
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 299.909
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 339.909
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 379.909
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 258.07092
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 298.07092
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 338.0709
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 378.0709
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: torch-lit
+					x: 352.47995
+					y: 777.8003
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 2
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							g: 0.83
+							b: 0.3
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: Hitbox-Small
+					x: 298.2493
+					y: 794.5422
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 338.24927
+					y: 794.5422
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 378.24927
+					y: 794.5422
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 260.23456
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 300.23456
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 340.23453
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 380.23453
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: dungeonWall33
+					x: 365.1259
+					y: 782.5037
+					change: {}
+				}
+				{
+					id: dungeonWall33
+					x: 345.204
+					y: 777.5923
+					change: {
+						yOff: -2.6548462
+					}
+				}
+				{
+					id: dungeonWall8
+					x: 219.58333
+					y: 779.528
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall17
+					x: 259.92517
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 299.92517
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 339.92517
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 379.92517
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: Wall-Hitbox
+					x: 220
+					y: 620
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 220
+					y: 660
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 220
+					y: 700
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 220
+					y: 780
+					change: {}
+				}
+				{
+					id: dungeonWall16
+					x: 263.52866
+					y: 638.53796
+					change: {
+						trigger: {
+							scr: "if ($event == onkey) {\n   player = (getobject \"player\");\n   give $player sword_0 1;\n   equip $player sword_0;\n\n   thread darkness {\n      for i 20 {\n         ambient (((20 - $i) / 20) + 0.1);\n         wait 100;\n      };\n   };\n   waitfor $darkness;\n\n   post \"???\" \"The darkness surrounds you...\";\n   wait 3000;\n   post \"???\" \"Enimies crawl out of their caves...\";\n   wait 2000;\n   for i 2 {\n      pos = (getmeta (getobject spawn) pos);\n      spawn missing (get $pos x) (get $pos y)\n         <{behaviors:[{\n            id:entity,\n            classPath:com.mygdx.entities.Eater,\n            persistent:[{N:target,S:player}]\n         }],groupIndex:0,categoryBits:1,maskBits:[1]}>;\n      wait 1000;\n   }\n};"
+							messageText: Sword
+							keys: [ 34 ]
+						}
+					}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall5
+						i: 0
+					}
+					{
+						id: dungeonWall5
+						i: 5
+					}
+					{
+						id: dungeonWall0
+						i: 10
+					}
+					{
+						id: dungeonWall9
+						i: 15
+					}
+					{
+						id: dungeonWall5
+						i: 20
+					}
+					{
+						id: dungeonWall5
+						i: 11
+					}
+					{
+						id: dungeonWall13
+						i: 16
+					}
+					{
+						id: dungeonWall7
+						i: 21
+					}
+					{
+						id: dungeonWall5
+						i: 12
+					}
+					{
+						id: dungeonWall13
+						i: 17
+					}
+					{
+						id: dungeonWall7
+						i: 22
+					}
+					{
+						id: dungeonWall5
+						i: 13
+					}
+					{
+						id: dungeonWall9
+						i: 18
+					}
+					{
+						id: dungeonWall7
+						i: 23
+					}
+					{
+						id: dungeonWall5
+						i: 14
+					}
+					{
+						id: dungeonWall5
+						i: 19
+					}
+					{
+						id: dungeonWall7
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall3
+					x: 220
+					y: 820
+					change: {}
+				}
+				{
+					id: Wall-Hitbox
+					x: 220.12253
+					y: 804.7513
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall4
+						i: 0
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall
+					x: 580
+					y: 580
+					change: {}
+				}
+				{
+					id: dungeonWall8
+					x: 580
+					y: 540
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 593.97986
+					y: 548.81665
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 593.97986
+					y: 588.81665
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall7
+					x: 419.99997
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 460
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 500
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 540
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 580
+					y: 660
+					change: {}
+				}
+				{
+					id: dungeonWall
+					x: 580
+					y: 620
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 419.909
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 459.909
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 499.90897
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 539.90894
+					y: 703.18933
+					change: {}
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 418.0709
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 458.07086
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 498.07086
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 538.07086
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 578.07086
+					y: 776.5978
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 498.24924
+					y: 794.5422
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 538.2492
+					y: 794.5422
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 420.2345
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 500.2345
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 540.2345
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 580.2345
+					y: 714.9045
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 460.2561
+					y: 714.87683
+					change: {}
+					groupIndex: 0
+					maskBits: [ 2 ]
+				}
+				{
+					id: torch-lit
+					x: 507.5416
+					y: 777.50653
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							g: 0.83
+							b: 0.3
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: Hitbox-Small
+					x: 458.45764
+					y: 794.5422
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: dungeonWall17
+					x: 419.92517
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 459.92517
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 499.92514
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall17
+					x: 539.9251
+					y: 675.07794
+					change: {}
+				}
+				{
+					id: dungeonWall3
+					x: 580
+					y: 700
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 593.97986
+					y: 628.81665
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 593.97986
+					y: 668.81665
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 594.4948
+					y: 699.032
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall5
+						i: 15
+					}
+					{
+						id: dungeonWall7
+						i: 20
+					}
+					{
+						id: dungeonWall5
+						i: 16
+					}
+					{
+						id: dungeonWall7
+						i: 21
+					}
+					{
+						id: dungeonWall5
+						i: 17
+					}
+					{
+						id: dungeonWall7
+						i: 22
+					}
+					{
+						id: dungeonWall9
+						i: 18
+					}
+					{
+						id: dungeonWall7
+						i: 23
+					}
+					{
+						id: dungeonWall4
+						i: 14
+					}
+					{
+						id: dungeonWall13
+						i: 19
+					}
+					{
+						id: dungeonWall7
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall7
+					x: 620
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 660
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 700
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 740
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 780
+					y: 540
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 619.72906
+					y: 530.27734
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 659.72906
+					y: 530.27734
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 699.72906
+					y: 530.27734
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 739.72906
+					y: 530.27734
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 779.72906
+					y: 530.27734
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall5
+						i: 15
+					}
+					{
+						id: dungeonWall5
+						i: 20
+					}
+					{
+						id: dungeonWall5
+						i: 16
+					}
+					{
+						id: dungeonWall5
+						i: 21
+					}
+					{
+						id: dungeonWall5
+						i: 17
+					}
+					{
+						id: dungeonWall5
+						i: 22
+					}
+					{
+						id: dungeonWall5
+						i: 18
+					}
+					{
+						id: dungeonWall13
+						i: 23
+					}
+					{
+						id: dungeonWall5
+						i: 19
+					}
+					{
+						id: dungeonWall5
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall5
+					x: 674.3826
+					y: 698.35864
+					change: {
+						yOff: -63.85309
+						trigger: {
+							scr: "spawnSpider = {\n   spawn missing $0 $1\n      <{behaviors:[{id:entity,classPath:com.mygdx.entities.Eater,\n      persistent:[{S:player,N:target}]}],\n      groupIndex:-1,categoryBits:1,maskBits:[1]}>\n};\n\nif ($event == onkey) {\n   targets = (getobjects \"spawn\");\n      for i (length $targets) {\n         pos = (getmeta $targets[$i] pos);\n         call $spawnSpider (get $pos x) (get $pos y);\n         wait 50;\n      };\n      wait 2000;\n};"
+							messageText: Spawn Spiders
+							keys: [ 34 ]
+						}
+						size: {
+							x: 76.875
+							y: 73.75
+						}
+					}
+				}
+				{
+					id: floor
+					addr: spawn
+					x: 770.04706
+					y: 720.8817
+					visible: false
+					change: {
+						size: {
+							x: 18.750002
+							y: 18.053093
+						}
+					}
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 791.503
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 618.09094
+					y: 776.62634
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: floor
+					x: 776.72974
+					y: 712.8112
+					visible: false
+					change: {
+						yOff: -74.225464
+						trigger: {
+							scr: "if ($event == onkey) {\n   spawnitem = {\n      spawnItem $0 $1 $2 0 1;\n   };\n\n   spawn = (getobject spawn);\n   pos = (getmeta $spawn pos);\n   for i 50 {\n      list = [iron_nugget];\n      call $spawnitem $list[0] (get $pos x) (get $pos y);\n   };\n};"
+							messageText: Spawn Test Item
+							keys: [ 34 ]
+						}
+					}
+				}
+				{
+					id: dungeonWall28
+					x: 765.4316
+					y: 725.0046
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 765.5752
+					y: 722.02423
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: torch-dark
+					x: 767.80615
+					y: 722.27545
+					change: {}
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall1
+						i: 5
+					}
+					{
+						id: dungeonWall1
+						i: 10
+					}
+					{
+						id: dungeonWall9
+						i: 15
+					}
+					{
+						id: dungeonWall12
+						i: 20
+					}
+					{
+						id: dungeonWall1
+						i: 11
+					}
+					{
+						id: dungeonWall1
+						i: 16
+					}
+					{
+						id: dungeonWall13
+						i: 21
+					}
+					{
+						id: dungeonWall1
+						i: 7
+					}
+					{
+						id: dungeonWall1
+						i: 12
+					}
+					{
+						id: dungeonWall13
+						i: 3
+					}
+					{
+						id: dungeonWall9
+						i: 23
+					}
+					{
+						id: dungeonWall13
+						i: 4
+					}
+					{
+						id: dungeonWall1
+						i: 9
+					}
+					{
+						id: dungeonWall9
+						i: 19
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: Hitbox-Small
+					x: 740
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 780
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 700
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 780.0355
+					y: 954.01624
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 740.244
+					y: 954.01624
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: arc-front
+					x: 660.04224
+					y: 955.14856
+					change: {
+						yOff: 45.592896
+					}
+				}
+				{
+					id: dungeonWall24
+					x: 652.5076
+					y: 935.9073
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 991.50305
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 951.5029
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 911.5029
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 871.50305
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 831.503
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 700.32153
+					y: 968.0618
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall45
+					x: 745.08673
+					y: 939.8395
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Tag
+							id: tag
+							persistent: [
+								{
+									T: FLOAT
+									N: size
+									F: 15
+								}
+								{
+									T: FLOAT
+									N: x
+									F: 37
+								}
+								{
+									T: FLOAT
+									N: y
+									F: 4
+								}
+								{
+									N: text
+									S: New Weapon Type
+								}
+								{
+									N: fontPath
+									S: "UI//fonts//RetroGaming.ttf"
+								}
+							]
+						}
+					]
+					change: {
+						size: {
+							x: 90.25001
+							y: 34.49997
+						}
+					}
+				}
+				{
+					id: chest1
+					x: 743.70886
+					y: 915.4171
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Chest
+							id: chest
+							persistent: [
+								{
+									T: BOOL
+									N: opened
+								}
+								{
+									N: command
+									S: spawnItem bow 733 828 0 1;wait 2000;spawnEntity spider 1000 832 player;
+								}
+							]
+						}
+					]
+					change: {
+						trigger: {
+							scr: spawnItem bow 733 828 0 1;wait 2000;spawnEntity spider 1000 832 player;
+							messageText: Open
+							keys: [ 34 ]
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+			]
+			g: {
+				r: dungeonWall
+				c: [
+					{
+						id: dungeonWall9
+						i: 1
+					}
+					{
+						id: dungeonWall9
+						i: 6
+					}
+					{
+						id: dungeonWall13
+						i: 11
+					}
+					{
+						id: dungeonWall13
+						i: 16
+					}
+					{
+						id: dungeonWall13
+						i: 21
+					}
+					{
+						id: dungeonWall9
+						i: 2
+					}
+					{
+						id: dungeonWall5
+						i: 7
+					}
+					{
+						id: dungeonWall5
+						i: 12
+					}
+					{
+						id: dungeonWall8
+						i: 17
+					}
+					{
+						id: dungeonWall5
+						i: 3
+					}
+					{
+						id: dungeonWall5
+						i: 8
+					}
+					{
+						id: dungeonWall5
+						i: 13
+					}
+					{
+						id: dungeonWall7
+						i: 18
+					}
+					{
+						id: dungeonWall5
+						i: 23
+					}
+					{
+						id: dungeonWall13
+						i: 4
+					}
+					{
+						id: dungeonWall9
+						i: 9
+					}
+					{
+						id: dungeonWall5
+						i: 14
+					}
+					{
+						id: dungeonWall7
+						i: 19
+					}
+					{
+						id: dungeonWall5
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 1111.503
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 1071.5029
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 634.898
+					y: 1031.5029
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall3
+					x: 700
+					y: 1100
+					change: {}
+				}
+				{
+					id: arc-front
+					x: 779.954
+					y: 1114.8228
+					change: {
+						yOff: 27.117554
+					}
+				}
+				{
+					id: Hitbox-Small
+					x: 739.14014
+					y: 1096.2098
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall24
+					x: 732.0026
+					y: 1080.9124
+					change: {}
+				}
+				{
+					id: dungeonWall32
+					x: 739.9222
+					y: 1105.0559
+					change: {}
+				}
+				{
+					id: dungeonWall41
+					addr: lock1
+					x: 659.6252
+					y: 1099.625
+					change: {}
+				}
+				{
+					id: floor
+					x: 660.46967
+					y: 1075.2566
+					visible: false
+					change: {
+						yOff: -34.02246
+						trigger: {
+							scr: "if ($event == onkey) {\n   player = (getobject player);\n   if (has $player rune 1) {\n      target = (getobject lock1);\n      targeth = (getobject lock1h);\n      post \"???\" \"Something is happening...\";\n      shake 0.5 3 $true;\n      wait 2000;\n      pos = (getmeta $target pos);\n      spawn dungeonWall43 (get $pos x) (get $pos y);\n      remove $targeth;\n      remove $target;\n      remove $self;\n   } {\n      post \"???\" \"You are missing something...\";\n   };\n};"
+							messageText: Use Rune
+							keys: [ 34 ]
+						}
+						size: {
+							x: 38.499985
+							y: 45.25009
+						}
+					}
+				}
+				{
+					id: Wall-Hitbox
+					addr: lock1h
+					x: 660.26685
+					y: 1114.7219
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 700.3216
+					y: 1008.0618
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 700.3216
+					y: 1048.0618
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Wall-Hitbox
+					x: 700.3216
+					y: 1088.0618
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall35
+					x: 788.02216
+					y: 1108.8556
+					change: {}
+				}
+				{
+					id: dungeonWall36
+					x: 771.52216
+					y: 1100.8557
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 780.02216
+					y: 1100.6058
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall
+				c: [
+					{
+						id: dungeonWall5
+						i: 1
+					}
+					{
+						id: dungeonWall5
+						i: 6
+					}
+					{
+						id: dungeonWall5
+						i: 11
+					}
+					{
+						id: dungeonWall5
+						i: 16
+					}
+					{
+						id: dungeonWall9
+						i: 21
+					}
+					{
+						id: dungeonWall0
+						i: 12
+					}
+					{
+						id: dungeonWall5
+						i: 17
+					}
+					{
+						id: dungeonWall5
+						i: 22
+					}
+					{
+						id: dungeonWall5
+						i: 3
+					}
+					{
+						id: dungeonWall5
+						i: 8
+					}
+					{
+						id: dungeonWall4
+						i: 13
+					}
+					{
+						id: dungeonWall9
+						i: 18
+					}
+					{
+						id: dungeonWall5
+						i: 23
+					}
+					{
+						id: dungeonWall5
+						i: 4
+					}
+					{
+						id: dungeonWall5
+						i: 9
+					}
+					{
+						id: dungeonWall5
+						i: 14
+					}
+					{
+						id: dungeonWall1
+						i: 19
+					}
+					{
+						id: dungeonWall9
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall
+						i: 0
+					}
+					{
+						id: dungeonWall
+						i: 5
+					}
+					{
+						id: dungeonWall1
+						i: 1
+					}
+					{
+						id: dungeonWall9
+						i: 2
+					}
+					{
+						id: dungeonWall9
+						i: 9
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall7
+					x: 820
+					y: 540
+					change: {}
+				}
+				{
+					id: dungeonWall12
+					x: 860
+					y: 540
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 819.7291
+					y: 530.27734
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 846.3221
+					y: 586.92554
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 846.3221
+					y: 547.2718
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall5
+						i: 15
+					}
+					{
+						id: dungeonWall5
+						i: 20
+					}
+					{
+						id: dungeonWall5
+						i: 16
+					}
+					{
+						id: dungeonWall
+						i: 21
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall0
+					x: 860
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 900
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 940
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 980
+					y: 620
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 861.96173
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 901.96173
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 941.96173
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 981.96173
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall3
+					x: 860
+					y: 620
+					change: {}
+				}
+				{
+					id: floor1
+					x: 806.0244
+					y: 707.348
+					visible: false
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Tag
+							id: tag
+							persistent: [
+								{
+									T: FLOAT
+									N: size
+									F: 24
+								}
+								{
+									T: FLOAT
+									N: x
+									F: 24
+								}
+								{
+									T: FLOAT
+									N: y
+									F: -40
+								}
+								{
+									N: text
+									S: Level 1
+								}
+								{
+									N: fontPath
+									S: "UI//fonts//RetroGaming.ttf"
+								}
+							]
+						}
+					]
+					change: {
+						trigger: {
+							scr: "if ($event == onkey) {\n   post \"???\" \"Let the games begin!\";\n   player = (getobject player);\n   behavior $player setvar entity maxSpeed (float 0);\n   clearinventory (getobject \"player\");\n   wait 3000;\n   loadworld dungeon2;\n};"
+							messageText: Start
+							keys: [ 34 ]
+						}
+						size: {
+							x: 54.25003
+							y: 47.5
+						}
+					}
+				}
+				{
+					id: dungeonWall28
+					x: 845.28424
+					y: 725.1984
+					change: {}
+				}
+				{
+					id: dungeonWall28
+					x: 924.7571
+					y: 725.1053
+					change: {}
+				}
+				{
+					id: dungeonWall23
+					x: 812.9393
+					y: 724.8764
+					change: {}
+				}
+				{
+					id: torch-lit
+					x: 845.2815
+					y: 722.5683
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: torch-dark
+					x: 927.13165
+					y: 722.37616
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 845.42786
+					y: 722.2181
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 924.90063
+					y: 722.12494
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 803.2944
+					y: 733.5835
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 845.58716
+					y: 733.0567
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: arc-front
+					x: 805.41675
+					y: 742.64087
+					change: {
+						yOff: 22.984558
+					}
+				}
+				{
+					id: Hitbox-Small
+					x: 962.6198
+					y: 733.68427
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: arc-front
+					x: 964.7422
+					y: 742.74164
+					change: {
+						yOff: 22.984558
+					}
+				}
+				{
+					id: floor1
+					x: 965.34985
+					y: 707.4487
+					visible: false
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Tag
+							id: tag
+							persistent: [
+								{
+									T: FLOAT
+									N: size
+									F: 24
+								}
+								{
+									T: FLOAT
+									N: x
+									F: 34
+								}
+								{
+									T: FLOAT
+									N: y
+									F: -40
+								}
+								{
+									N: text
+									S: Level ???
+								}
+								{
+									N: fontPath
+									S: "UI//fonts//RetroGaming.ttf"
+								}
+							]
+						}
+					]
+					change: {
+						trigger: {
+							scr: "if ($event == onkey) {\n   dialog <{frames:[{text:{text:\"???\"}}]}>\n};"
+							messageText: Start
+							keys: [ 34 ]
+						}
+						size: {
+							x: 54.25003
+							y: 47.5
+						}
+					}
+				}
+				{
+					id: dungeonWall23
+					x: 972.2648
+					y: 724.9771
+					change: {}
+				}
+				{
+					id: sand-floor9
+					x: 939.99994
+					y: 660
+					change: {
+						yOff: -84.84857
+					}
+				}
+				{
+					id: sand-floor5
+					x: 980
+					y: 700
+					change: {
+						yOff: -76.15961
+					}
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall9
+						i: 20
+					}
+					{
+						id: dungeonWall9
+						i: 21
+					}
+					{
+						id: dungeonWall9
+						i: 12
+					}
+					{
+						id: dungeonWall9
+						i: 13
+					}
+					{
+						id: dungeonWall9
+						i: 18
+					}
+					{
+						id: dungeonWall9
+						i: 23
+					}
+					{
+						id: sand-floor4
+						i: 9
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: Hitbox-Small
+					x: 820
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 860
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 900
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 940
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 980
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 820.0355
+					y: 954.01624
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 899.7693
+					y: 954.01624
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 859.9777
+					y: 954.01624
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 979.71155
+					y: 954.38086
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: torch-lit
+					x: 930.02124
+					y: 937.73627
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: dungeonWall31
+					x: 822.5546
+					y: 937.5644
+					change: {}
+				}
+				{
+					id: dungeonWall33
+					x: 865.0586
+					y: 937.44495
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 939.7693
+					y: 954.01624
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: dungeonWall28
+					x: 857.4033
+					y: 962.50214
+					change: {}
+				}
+				{
+					id: dungeonWall45
+					x: 904.6746
+					y: 939.6587
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Tag
+							id: tag
+							persistent: [
+								{
+									T: FLOAT
+									N: size
+									F: 15
+								}
+								{
+									T: FLOAT
+									N: x
+									F: 18
+								}
+								{
+									T: FLOAT
+									N: y
+									F: 4
+								}
+								{
+									N: text
+									S: New Mob
+								}
+								{
+									N: fontPath
+									S: "UI//fonts//RetroGaming.ttf"
+								}
+							]
+						}
+					]
+					change: {}
+				}
+				{
+					id: floor
+					x: 904.3279
+					y: 906.5708
+					visible: false
+					change: {
+						trigger: {
+							scr: "if ($event == onkey) {\n   dialog <{frames:[{\n      text:{text:\"There is also a new mob:\"}\n   },{\n      text:{text:\"The Bat!\"}\n   },\n   {\n      text:{text:\"But don't worry, they are just curious!\"}\n   }]}>;\n   \n   spawnEntity bat 904 857 player;\n};"
+							messageText: Spawn
+							keys: [ 34 ]
+						}
+						size: {
+							x: 54.000034
+							y: 33.999958
+						}
+					}
+				}
+				{
+					id: torch-lit
+					x: 809.6994
+					y: 939.9347
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1.5
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall1
+						i: 0
+					}
+					{
+						id: dungeonWall9
+						i: 5
+					}
+					{
+						id: dungeonWall9
+						i: 10
+					}
+					{
+						id: dungeonWall7
+						i: 15
+					}
+					{
+						id: dungeonWall13
+						i: 20
+					}
+					{
+						id: dungeonWall7
+						i: 16
+					}
+					{
+						id: dungeonWall9
+						i: 21
+					}
+					{
+						id: dungeonWall13
+						i: 7
+					}
+					{
+						id: dungeonWall9
+						i: 12
+					}
+					{
+						id: dungeonWall7
+						i: 17
+					}
+					{
+						id: dungeonWall13
+						i: 13
+					}
+					{
+						id: dungeonWall7
+						i: 18
+					}
+					{
+						id: dungeonWall1
+						i: 4
+					}
+					{
+						id: dungeonWall9
+						i: 9
+					}
+					{
+						id: dungeonWall7
+						i: 19
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: torch-lit
+					x: 857.69586
+					y: 1057.4542
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: Hitbox-Small
+					x: 858.8656
+					y: 1051.7375
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall3
+					x: 860
+					y: 1100
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 938.2818
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 858.2818
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 898.2818
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 820.7537
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 978.2818
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 859.16565
+					y: 1067.2698
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 843.41565
+					y: 1079.6443
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 874.1658
+					y: 1078.5194
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall33
+					x: 972.2902
+					y: 1102.4426
+					change: {
+						yOff: 7.540283
+					}
+				}
+				{
+					id: dungeonWall23
+					x: 827.59973
+					y: 1082.6179
+					change: {}
+				}
+				{
+					id: dungeonWall45
+					x: 952.4894
+					y: 1099.9943
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Tag
+							id: tag
+							persistent: [
+								{
+									T: FLOAT
+									N: size
+									F: 15
+								}
+								{
+									T: FLOAT
+									N: x
+									F: 13
+								}
+								{
+									T: FLOAT
+									N: y
+									F: 4
+								}
+								{
+									N: text
+									S: Items:
+								}
+								{
+									N: fontPath
+									S: "UI//fonts//RetroGaming.ttf"
+								}
+							]
+						}
+					]
+					change: {}
+				}
+				{
+					id: floor
+					x: 953.2913
+					y: 1060.64
+					visible: false
+					change: {
+						trigger: {
+							scr: "if ($event == onkey) {\n   for i 20 {\n      spawnItem iron_nugget 957 996 0 1;\n      wait 100;\n   };\n   dialog <{\n      frames: [\n         {\n            text: {text:\"As usual, the items are objects, wich extend a behavior (The 'WorldItem' behavior)\"}\n         }\n      ]\n   }>;\n};"
+							messageText: Spawn Iron nuggets
+							keys: [ 34 ]
+						}
+						size: {
+							x: 72.24936
+							y: 36.888256
+						}
+					}
+				}
+				{
+					id: sand-floor3
+					x: 980
+					y: 1060
+					change: {
+						yOff: -74.62964
+					}
+				}
+				{
+					id: sand-floor3
+					x: 939.99994
+					y: 1060
+					change: {
+						yOff: -79.37964
+					}
+				}
+				{
+					id: sand-floor3
+					x: 900
+					y: 1060
+					change: {
+						yOff: -76.37964
+					}
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall9
+						i: 0
+					}
+					{
+						id: dungeonWall13
+						i: 5
+					}
+					{
+						id: dungeonWall0
+						i: 10
+					}
+					{
+						id: dungeonWall
+						i: 15
+					}
+					{
+						id: dungeonWall
+						i: 20
+					}
+					{
+						id: dungeonWall29
+						i: 6
+					}
+					{
+						id: dungeonWall7
+						i: 11
+					}
+					{
+						id: dungeonWall21
+						i: 16
+					}
+					{
+						id: dungeonWall21
+						i: 21
+					}
+					{
+						id: dungeonWall13
+						i: 2
+					}
+					{
+						id: dungeonWall7
+						i: 12
+					}
+					{
+						id: dungeonWall21
+						i: 17
+					}
+					{
+						id: dungeonWall21
+						i: 22
+					}
+					{
+						id: dungeonWall13
+						i: 8
+					}
+					{
+						id: dungeonWall7
+						i: 13
+					}
+					{
+						id: dungeonWall21
+						i: 18
+					}
+					{
+						id: dungeonWall21
+						i: 23
+					}
+					{
+						id: dungeonWall7
+						i: 14
+					}
+					{
+						id: dungeonWall21
+						i: 19
+					}
+					{
+						id: dungeonWall21
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall
+						i: 0
+					}
+					{
+						id: dungeonWall
+						i: 5
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall7
+					x: 1020
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 1060
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 1060
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 1100
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall12
+					x: 1140
+					y: 620
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 780.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 681.8723
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1021.96173
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1061.9618
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1101.9618
+					y: 611.33887
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 660.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 620.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall7
+					x: 1180
+					y: 660
+					change: {}
+				}
+				{
+					id: dungeonWall0
+					x: 1140
+					y: 660
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 1138.5631
+					y: 716.24
+					rotation: 17
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1139.1957
+					y: 756.64624
+					rotation: 17
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall28
+					x: 1004.6098
+					y: 725.29913
+					change: {}
+				}
+				{
+					id: torch-lit
+					x: 1004.607
+					y: 722.66907
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: Hitbox-Small
+					x: 1004.75336
+					y: 722.3188
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1004.91266
+					y: 733.1574
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: sand-floor9
+					x: 1060
+					y: 700
+					change: {
+						yOff: -92.91388
+					}
+				}
+				{
+					id: sand-floor5
+					x: 1020
+					y: 700
+					change: {
+						yOff: -73.68768
+					}
+				}
+				{
+					id: sand-floor5
+					x: 1100
+					y: 739.99994
+					change: {
+						yOff: -85.32367
+					}
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: sand-floor4
+						i: 5
+					}
+					{
+						id: dungeonWall9
+						i: 20
+					}
+					{
+						id: sand-floor4
+						i: 6
+					}
+					{
+						id: dungeonWall9
+						i: 11
+					}
+					{
+						id: dungeonWall9
+						i: 16
+					}
+					{
+						id: sand-floor4
+						i: 7
+					}
+					{
+						id: sand-floor4
+						i: 12
+					}
+					{
+						id: dungeonWall9
+						i: 17
+					}
+					{
+						id: dungeonWall
+						i: 8
+					}
+					{
+						id: dungeonWall
+						i: 13
+					}
+					{
+						id: dungeonWall39
+						i: 18
+					}
+					{
+						id: dungeonWall
+						i: 23
+					}
+					{
+						id: dungeonWall21
+						i: 4
+					}
+					{
+						id: dungeonWall21
+						i: 9
+					}
+					{
+						id: dungeonWall9
+						i: 14
+					}
+					{
+						id: dungeonWall13
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: Hitbox-Small
+					x: 1060
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1100
+					y: 940
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 860.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 820.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 900.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1124.8938
+					y: 940.6223
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1059.7844
+					y: 954.38086
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1099.7267
+					y: 954.38086
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: dungeonWall23
+					x: 1107.5066
+					y: 915.00757
+					change: {
+						yOff: -19.81726
+					}
+				}
+				{
+					id: dungeonWall35
+					x: 1099.9991
+					y: 915.0829
+					change: {
+						yOff: -29.23413
+					}
+				}
+				{
+					id: Wall-Hitbox
+					x: 1085.577
+					y: 915.31335
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall36
+					x: 1070.8055
+					y: 914.16504
+					change: {}
+				}
+				{
+					id: dungeonWall37
+					x: 1020
+					y: 940
+					change: {
+						yOff: -37.655518
+					}
+				}
+				{
+					id: dungeonWall15
+					x: 1180
+					y: 980
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 1125.1451
+					y: 980.445
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall28
+					x: 1062.5215
+					y: 962.6586
+					change: {}
+				}
+				{
+					id: dungeonWall8
+					x: 1140
+					y: 820
+					change: {}
+				}
+				{
+					id: dungeonWall36
+					x: 1195.75
+					y: 801.74994
+					change: {}
+				}
+				{
+					id: dungeonWall27
+					x: 1160.4563
+					y: 802.89307
+					change: {}
+				}
+				{
+					id: EntityShell
+					addr: player
+					x: 1032.5049
+					y: 862.78326
+					behaviors: [
+						{
+							classPath: com.mygdx.entities.Entity
+							id: data
+							persistent: [
+								{
+									T: BOOL
+									N: barVisible
+								}
+								{
+									T: INT
+									N: health
+									I: 85889
+								}
+								{
+									T: INT
+									N: maxHealth
+									I: 99999
+								}
+								{
+									T: INT
+									N: barType
+								}
+								{
+									T: FLOAT
+									N: sScale
+									F: 1
+								}
+								{
+									T: FLOAT
+									N: sOffset
+								}
+								{
+									N: name
+								}
+							]
+						}
+						{
+							classPath: com.mygdx.entities.Player
+							id: entity
+							persistent: [
+								{
+									T: FLOAT
+									N: maxSpeed
+									F: 3
+								}
+							]
+						}
+						{
+							classPath: com.mygdx.behavior.KeyTrigger
+							id: tracker
+						}
+					]
+					change: {
+						yOff: 3.9523315
+						fixtures: [
+							{
+								yOff: -10
+								width: 20
+								height: 20
+							}
+						]
+						fixed: false
+						size: {
+							x: 40
+							y: 40
+						}
+						fixedRotation: true
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+			]
+			g: {
+				r: dungeonWall5
+				c: [
+					{
+						id: dungeonWall9
+						i: 0
+					}
+					{
+						id: dungeonWall9
+						i: 10
+					}
+					{
+						id: dungeonWall9
+						i: 20
+					}
+					{
+						id: dungeonWall9
+						i: 6
+					}
+					{
+						id: dungeonWall13
+						i: 11
+					}
+					{
+						id: dungeonWall7
+						i: 16
+					}
+					{
+						id: dungeonWall9
+						i: 21
+					}
+					{
+						id: dungeonWall9
+						i: 12
+					}
+					{
+						id: dungeonWall7
+						i: 17
+					}
+					{
+						id: dungeonWall13
+						i: 22
+					}
+					{
+						id: dungeonWall
+						i: 3
+					}
+					{
+						id: dungeonWall
+						i: 8
+					}
+					{
+						id: dungeonWall
+						i: 13
+					}
+					{
+						id: dungeonWall
+						i: 18
+					}
+					{
+						id: dungeonWall
+						i: 23
+					}
+					{
+						id: dungeonWall7
+						i: 4
+					}
+					{
+						id: dungeonWall21
+						i: 9
+					}
+					{
+						id: dungeonWall21
+						i: 14
+					}
+					{
+						id: dungeonWall21
+						i: 19
+					}
+					{
+						id: dungeonWall21
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall15
+					x: 1180
+					y: 1020
+					change: {}
+				}
+				{
+					id: dungeonWall25
+					x: 1180
+					y: 1060
+					change: {}
+				}
+				{
+					id: torch-lit
+					x: 1060.0205
+					y: 1057.5173
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: torch
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+					categoryBits: 2
+				}
+				{
+					id: Hitbox-Small
+					x: 1060.8485
+					y: 1056.2638
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall3
+					x: 1060
+					y: 1100
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 1018.2818
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1058.2817
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1098.2817
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1138.2817
+					y: 1096.9413
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1060.1658
+					y: 1064.6447
+					rotation: -360
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1045.5406
+					y: 1078.5195
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1074.4156
+					y: 1078.5194
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: dungeonWall36
+					x: 1027.0184
+					y: 1081.3229
+					change: {}
+				}
+				{
+					id: dungeonWall33
+					x: 1105.134
+					y: 1100.0989
+					change: {}
+				}
+				{
+					id: dungeonWall3
+					x: 1140
+					y: 1100
+					change: {}
+				}
+				{
+					id: Hitbox-Small
+					x: 1125.1451
+					y: 1060.4451
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: Hitbox-Small
+					x: 1125.1451
+					y: 1020.445
+					rotation: -90
+					change: {}
+					groupIndex: 0
+					maskBits: [ 1 ]
+				}
+				{
+					id: chest1
+					x: 1061.297
+					y: 1035.9196
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Chest
+							id: chest
+							persistent: [
+								{
+									T: BOOL
+									N: opened
+								}
+								{
+									N: command
+									S: pos = (getmeta $self pos);spawnItem wooden_sword (get $pos x) (get $pos y) 0 1;
+								}
+							]
+						}
+					]
+					change: {
+						trigger: {
+							scr: pos = (getmeta $self pos);spawnItem wooden_sword (get $pos x) (get $pos y) 0 1;
+							messageText: Open
+							keys: [ 34 ]
+						}
+					}
+					groupIndex: 0
+					maskBits: [ 1, 2 ]
+				}
+				{
+					id: sand-floor3
+					x: 1020
+					y: 1060
+					change: {
+						yOff: -82.12976
+					}
+				}
+			]
+			g: {
+				r: dungeonWall7
+				c: [
+					{
+						id: dungeonWall13
+						i: 0
+					}
+					{
+						id: dungeonWall5
+						i: 5
+					}
+					{
+						id: dungeonWall21
+						i: 15
+					}
+					{
+						id: dungeonWall21
+						i: 20
+					}
+					{
+						id: dungeonWall9
+						i: 1
+					}
+					{
+						id: dungeonWall29
+						i: 6
+					}
+					{
+						id: dungeonWall21
+						i: 16
+					}
+					{
+						id: dungeonWall21
+						i: 21
+					}
+					{
+						id: dungeonWall5
+						i: 2
+					}
+					{
+						id: dungeonWall13
+						i: 7
+					}
+					{
+						id: dungeonWall21
+						i: 17
+					}
+					{
+						id: dungeonWall21
+						i: 22
+					}
+					{
+						id: dungeonWall
+						i: 3
+					}
+					{
+						id: dungeonWall
+						i: 8
+					}
+					{
+						id: dungeonWall21
+						i: 18
+					}
+					{
+						id: dungeonWall21
+						i: 23
+					}
+					{
+						id: dungeonWall21
+						i: 4
+					}
+					{
+						id: dungeonWall21
+						i: 9
+					}
+					{
+						id: dungeonWall21
+						i: 19
+					}
+					{
+						id: dungeonWall21
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall1
+					x: 1176.1172
+					y: 1235.6948
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: test
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+				}
+			]
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall12
+					x: 1260
+					y: 660
+					change: {}
+				}
+				{
+					id: dungeonWall7
+					x: 1220
+					y: 660
+					change: {}
+				}
+				{
+					id: dungeonWall23
+					x: 1227.9563
+					y: 797.2682
+					change: {}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall13
+						i: 10
+					}
+					{
+						id: dungeonWall9
+						i: 15
+					}
+					{
+						id: dungeonWall5
+						i: 20
+					}
+					{
+						id: dungeonWall
+						i: 11
+					}
+					{
+						id: dungeonWall
+						i: 16
+					}
+					{
+						id: dungeonWall
+						i: 21
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall3
+					x: 1260
+					y: 820
+					change: {}
+				}
+				{
+					id: dungeonWall35
+					x: 1224.125
+					y: 800.625
+					change: {}
+				}
+				{
+					id: dungeonWall1
+					x: 1349.457
+					y: 999.48883
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: test
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+									F: 100
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 2
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall7
+						i: 0
+					}
+					{
+						id: dungeonWall4
+						i: 1
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall1
+					x: 1353.7295
+					y: 1125.2212
+					behaviors: [
+						{
+							classPath: com.mygdx.behavior.Torch
+							id: test
+							persistent: [
+								{
+									T: FLOAT
+									N: yOffset
+								}
+								{
+									T: FLOAT
+									N: xOffset
+								}
+								{
+									T: FLOAT
+									N: dist
+									F: 1
+								}
+							]
+						}
+					]
+					change: {
+						light: {
+							r: 0.5
+							g: 0.8
+							b: 0.9
+							a: 0.8
+							rays: 80
+						}
+					}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall7
+						i: 10
+					}
+					{
+						id: dungeonWall4
+						i: 11
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+	]
+]
+}

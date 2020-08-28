@@ -1,0 +1,17 @@
+{
+    "id": "Hitbox-Small x3",
+    "type": 1, //Static
+
+    "size": {
+        "x": -1,
+        "y": -1
+    },
+
+    "fixtures": [
+        {
+            "isCircle": false,
+            "width": -3,
+            "height": -0.25
+        }
+    ]
+}

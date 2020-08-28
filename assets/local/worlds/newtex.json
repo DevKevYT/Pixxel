@@ -1,0 +1,526 @@
+{
+scl: 0.02
+sizeX: 5
+sizeY: 5
+viewport: {
+	rd: 10
+	x: 753.2483
+	y: 798.9334
+	zoom: 1.5282655
+}
+chunks: [
+	[
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall3
+					x: 500
+					y: 580
+					change: {}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall7
+						i: 10
+					}
+					{
+						id: dungeonWall7
+						i: 11
+					}
+					{
+						id: dungeonWall11
+						i: 12
+					}
+					{
+						id: dungeonWall
+						i: 17
+					}
+					{
+						id: dungeonWall5
+						i: 22
+					}
+					{
+						id: dungeonWall7
+						i: 13
+					}
+					{
+						id: dungeonWall5
+						i: 18
+					}
+					{
+						id: dungeonWall5
+						i: 23
+					}
+					{
+						id: dungeonWall7
+						i: 14
+					}
+					{
+						id: dungeonWall5
+						i: 19
+					}
+					{
+						id: dungeonWall5
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall1
+					x: 580
+					y: 660
+					change: {}
+				}
+				{
+					id: dungeonWall28
+					x: 500
+					y: 620
+					change: {}
+				}
+				{
+					id: dungeonWall28
+					x: 540
+					y: 780
+					change: {}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall5
+						i: 2
+					}
+					{
+						id: dungeonWall5
+						i: 7
+					}
+					{
+						id: dungeonWall0
+						i: 12
+					}
+					{
+						id: dungeonWall5
+						i: 17
+					}
+					{
+						id: dungeonWall5
+						i: 22
+					}
+					{
+						id: dungeonWall5
+						i: 3
+					}
+					{
+						id: dungeonWall5
+						i: 8
+					}
+					{
+						id: dungeonWall7
+						i: 13
+					}
+					{
+						id: dungeonWall5
+						i: 18
+					}
+					{
+						id: dungeonWall5
+						i: 23
+					}
+					{
+						id: dungeonWall5
+						i: 4
+					}
+					{
+						id: dungeonWall5
+						i: 9
+					}
+					{
+						id: dungeonWall7
+						i: 14
+					}
+					{
+						id: dungeonWall9
+						i: 19
+					}
+					{
+						id: dungeonWall1
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall29
+						i: 3
+					}
+					{
+						id: dungeonWall29
+						i: 8
+					}
+					{
+						id: dungeonWall
+						i: 13
+					}
+					{
+						id: dungeonWall37
+						i: 4
+					}
+					{
+						id: dungeonWall1
+						i: 9
+					}
+					{
+						id: dungeonWall1
+						i: 14
+					}
+				]
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall12
+						i: 10
+					}
+					{
+						id: dungeonWall
+						i: 15
+					}
+					{
+						id: dungeonWall
+						i: 20
+					}
+					{
+						id: dungeonWall29
+						i: 18
+					}
+					{
+						id: dungeonWall
+						i: 23
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall3
+					x: 620
+					y: 700
+					change: {}
+				}
+				{
+					id: dungeonWall3
+					x: 739.99994
+					y: 700
+					change: {}
+				}
+			]
+			g: {
+				r: dungeonWall21
+				c: [
+					{
+						id: dungeonWall
+						i: 0
+					}
+					{
+						id: dungeonWall
+						i: 5
+					}
+					{
+						id: dungeonWall7
+						i: 10
+					}
+					{
+						id: dungeonWall5
+						i: 15
+					}
+					{
+						id: dungeonWall1
+						i: 20
+					}
+					{
+						id: dungeonWall7
+						i: 11
+					}
+					{
+						id: dungeonWall1
+						i: 16
+					}
+					{
+						id: dungeonWall5
+						i: 21
+					}
+					{
+						id: dungeonWall7
+						i: 12
+					}
+					{
+						id: dungeonWall13
+						i: 17
+					}
+					{
+						id: dungeonWall1
+						i: 22
+					}
+					{
+						id: dungeonWall
+						i: 3
+					}
+					{
+						id: dungeonWall
+						i: 8
+					}
+					{
+						id: dungeonWall12
+						i: 13
+					}
+					{
+						id: dungeonWall15
+						i: 18
+					}
+					{
+						id: dungeonWall15
+						i: 23
+					}
+					{
+						id: dungeonWall13
+						i: 19
+					}
+					{
+						id: dungeonWall9
+						i: 24
+					}
+				]
+			}
+		}
+		{
+			o: [
+				{
+					id: dungeonWall35
+					x: 702.75653
+					y: 803.29846
+					change: {}
+				}
+				{
+					id: dungeonWall36
+					x: 674.76044
+					y: 805.04
+					change: {}
+				}
+				{
+					id: torch-lit
+					x: 611.745
+					y: 818.41077
+					change: {}
+				}
+			]
+			g: {
+				r: dungeonWall9
+				c: [
+					{
+						id: dungeonWall0
+						i: 0
+					}
+					{
+						id: dungeonWall5
+						i: 5
+					}
+					{
+						id: dungeonWall21
+						i: 15
+					}
+					{
+						id: dungeonWall21
+						i: 20
+					}
+					{
+						id: dungeonWall7
+						i: 1
+					}
+					{
+						id: dungeonWall1
+						i: 6
+					}
+					{
+						id: dungeonWall5
+						i: 11
+					}
+					{
+						id: dungeonWall21
+						i: 16
+					}
+					{
+						id: dungeonWall21
+						i: 21
+					}
+					{
+						id: dungeonWall7
+						i: 2
+					}
+					{
+						id: dungeonWall21
+						i: 17
+					}
+					{
+						id: dungeonWall21
+						i: 22
+					}
+					{
+						id: dungeonWall15
+						i: 3
+					}
+					{
+						id: dungeonWall29
+						i: 8
+					}
+					{
+						id: dungeonWall15
+						i: 13
+					}
+					{
+						id: dungeonWall21
+						i: 18
+					}
+					{
+						id: dungeonWall21
+						i: 23
+					}
+					{
+						id: dungeonWall13
+						i: 4
+					}
+					{
+						id: dungeonWall37
+						i: 9
+					}
+					{
+						id: dungeonWall21
+						i: 19
+					}
+					{
+						id: dungeonWall21
+						i: 24
+					}
+				]
+			}
+		}
+	]
+	[
+		{
+			g: {
+				r: dungeonWall5
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+		{
+			g: {
+				r: dungeonWall21
+			}
+		}
+	]
+]
+}

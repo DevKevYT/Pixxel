@@ -1,0 +1,17 @@
+{
+  "id": "Wall-Hitbox",
+  "type": 1, //Static
+
+  "size": {
+    "x": -1,
+    "y": -1
+  },
+
+  "fixtures": [
+    {
+      "isCircle": false,
+      "width": -1,
+      "height": -1
+    }
+  ]
+}

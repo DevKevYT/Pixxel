@@ -1,0 +1,138 @@
+eater.png
+size: 96, 16
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+idle-left
+  rotate: false
+  xy: 0, 0
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-left1
+  rotate: false
+  xy: 16, 0
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-left2
+  rotate: false
+  xy: 32, 0
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-left3
+  rotate: false
+  xy: 48, 0
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-left4
+  rotate: false
+  xy: 64, 0
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-left5
+  rotate: false
+  xy: 80, 0
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-right1
+  rotate: false
+  xy: 0, 16
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-right2
+  rotate: false
+  xy: 32, 16
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-right3
+  rotate: false
+  xy: 48, 16
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-right4
+  rotate: false
+  xy: 64, 16
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+walk-right5
+  rotate: false
+  xy: 80, 16
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+attack-right1
+  rotate: false
+  xy: 0, 32
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+attack-right2
+  rotate: false
+  xy: 16, 32
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+attack-right3
+  rotate: false
+  xy: 32, 32
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+attack-right4
+  rotate: false
+  xy: 48, 32
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit-left1
+  rotate: false
+  xy: 64, 32
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit-left2
+  rotate: false
+  xy: 80, 32
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit-right1
+  rotate: false
+  xy: 80, 48
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit-right2
+  rotate: false
+  xy: 64, 48
+  size: 16, 16
+  orig: 0, 0
+  offset: 0, 0
+  index: -1

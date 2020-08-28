@@ -1,0 +1,20 @@
+{
+    loadType: TILESET
+    id: chest
+    texturePath: "*/chest.png"
+    size: {
+        x: -1
+        y: -1
+    }
+    fixtures: [
+        {
+            yOff: -5
+            width: -0.6
+            height: -0.5
+        }
+    ],
+    tX: 0
+    tY:0
+    tW:16
+    tH:16
+}

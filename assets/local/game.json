@@ -1,0 +1,134 @@
+{
+custom: {
+	currentWorld: newtex.json
+	custom: [
+		{
+			name: cell3
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+			object: {
+				class: com.mygdx.items.ItemValues$ItemCellData
+				id: wooden_sword
+			}
+		}
+		{
+			name: cell0-0
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+			object: {
+				class: com.mygdx.items.ItemValues$ItemCellData
+			}
+		}
+		{
+			name: cell1
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell1-1
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell1-2
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell1-3
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell1-4
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell2-0
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell2-1
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell2-2
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell2-3
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell2-4
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell3-0
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell3-1
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell3-2
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell3-4
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell0
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell2
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell0-1
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+			object: {
+				class: com.mygdx.items.ItemValues$ItemCellData
+			}
+		}
+		{
+			name: cell0-2
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell0-3
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell0-4
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell1-0
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+		{
+			name: cell3-3
+			classPath: com.mygdx.items.ItemValues$ItemCellData
+		}
+	]
+}
+worlds: [
+	"/local/worlds/CityOfBeginning.json"
+	"/local/worlds/arena.json"
+	"/local/worlds/debug.json"
+	"/local/worlds/dungeon1.json"
+	"/local/worlds/dungeon2.json"
+	"/local/worlds/stresstest.json"
+	"/local/worlds/newtex.json"
+]
+root: [
+	local/objects/entities/
+	local/objects/floor/floor.json
+	local/objects/dungeon/
+	local/objects/misc/
+]
+hashData: [
+	{
+		N: trigger
+		S: "false"
+	}
+]
+}

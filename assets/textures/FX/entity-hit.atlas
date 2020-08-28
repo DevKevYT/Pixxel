@@ -1,0 +1,33 @@
+entity-hit.png
+size: 68, 17
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+hit1
+  rotate: false
+  xy: 0, 0
+  size: 17, 17
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit2
+  rotate: false
+  xy: 17, 0
+  size: 17, 17
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit3
+  rotate: false
+  xy: 34, 0
+  size: 17, 17
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
+hit4
+  rotate: false
+  xy: 51, 0
+  size: 17, 17
+  orig: 0, 0
+  offset: 0, 0
+  index: -1
