@@ -2,7 +2,10 @@ package com.mygdx.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.eztech.util.JavaClassFinder;
 import com.mygdx.darkdawn.Logger;
+
+import org.reflections.Reflections;
 
 import java.beans.Transient;
 import java.lang.annotation.Annotation;
@@ -14,6 +17,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**Makes custom object updating of objects possible (Only possible within source code with abstract methods)<br>
  * Abstract functions are only called, when the object is/was added to the specified world.
@@ -33,11 +37,6 @@ public abstract class Behavior {
     protected boolean added;
     Class<?> subClass;
 
-    static {
-        //Find all behaviors
-
-    }
-
     //Variables you don't want to save should be declared private, protected, or none, be non primitive (Integer i = 0) or start with a underscore e.g. public int _noSave = 0;
     public Behavior(WorldValues.BehaviorValues values, Class<?> subClass) {
         added = false;
@@ -45,11 +44,6 @@ public abstract class Behavior {
         this.values = values;
         data = new HashData(values.persistent);
         this.subClass = subClass;
-
-        for(Class<?> c : BEHAVIOR_CLASSES) {
-            if(c.equals(subClass)) return;
-        }
-        BEHAVIOR_CLASSES.add(subClass);
     }
 
     protected final void addToWorld(World world, WorldObject parent) {
@@ -66,6 +60,12 @@ public abstract class Behavior {
     protected final void doPostCreate() {
         postCreate();
         added = true;
+    }
+
+    public static void findBehaviors() {
+        Reflections reflections = new Reflections("com.mygdx");
+        Set<Class<? extends Behavior>> classes = reflections.getSubTypesOf(Behavior.class);
+        BEHAVIOR_CLASSES.addAll(classes);
     }
 
     /**Converts the public and valid variables into hashdata to save declared variables.<br>

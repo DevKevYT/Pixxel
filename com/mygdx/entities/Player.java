@@ -43,13 +43,14 @@ public class Player extends Behavior implements EntityEvents {
     boolean blocking = false;
     boolean bowTensing = false;
     private TextureAtlas itemAtlas;
+    private boolean isDead = false;
 
     private ArrayList<Vector3> dashShadow = new ArrayList<>();
 
     public Player(WorldValues.BehaviorValues values) {
         super(values, Player.class);
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("textures/player/player.atlas"));
-        itemAtlas = new TextureAtlas(Gdx.files.internal("textures/player/items.atlas"));
+        itemAtlas = new TextureAtlas(Gdx.files.internal("textures/player/items21.atlas"));
         animation = new SpriteAnimation();
         animation.addMovie("idle-front", new Movie(1, atlas, "idle-front"));
         animation.addMovie("idle-left", new Movie(1, atlas,"idle-left"));
@@ -68,8 +69,8 @@ public class Player extends Behavior implements EntityEvents {
         animation.addMovie("walk-right", new Movie(8, atlas, "right2", "right3", "right4", "right1"));
         animation.addMovie("handheld-walk-right", new Movie(8, atlas, "handheld-right1", "handheld-right2", "handheld-right3", "handheld-right4"));
 
-        animation.addMovie("melee-left", new Movie(12, atlas,"melee-left1", "melee-left2", "melee-left3", "melee-left3"));
-        animation.addMovie("melee-right", new Movie(12, atlas,"melee-right1", "melee-right2", "melee-right3", "melee-right3"));
+        animation.addMovie("melee-left", new Movie(15, atlas,"melee-left1", "melee-left2", "melee-left3", "melee-left4", "melee-left4"));
+        animation.addMovie("melee-right", new Movie(15, atlas,"melee-right1", "melee-right2", "melee-right3", "melee-right4", "melee-right4"));
         animation.addMovie("hit-left", new Movie(10, atlas, "hit-left-1", "hit-left-0", "hit-left-1"));
         animation.addMovie("hit-right", new Movie(10, atlas, "hit-right-1", "hit-right-0", "hit-right-1"));
 
@@ -81,8 +82,6 @@ public class Player extends Behavior implements EntityEvents {
         animation.play("idle-front");
 
         itemAnimations = new SpriteAnimation();
-       // itemAnimations.addMovie("sword-default-left", new Movie(10, itemAtlas, "sword-left-0", "sword-left-1", "sword-left-2", "sword-left-2"));
-       // itemAnimations.addMovie("sword-default-right", new Movie(10, itemAtlas, "sword-right-0", "sword-right-1", "sword-right-2", "sword-right-2"));
     }
 
     @Override
@@ -92,6 +91,7 @@ public class Player extends Behavior implements EntityEvents {
 
     @Override
     public void onCreate(WorldObject object) {
+
         object.getRootValues().values.fixed = false;
         if(object.getHashWrapper().get("respawnX") != null) object.getHashWrapper().setString("respawnX", "20");
         if(object.getHashWrapper().get("respawnY") != null) object.getHashWrapper().setString("respawnY", "20"); //now, we know for sure they exist
@@ -102,29 +102,35 @@ public class Player extends Behavior implements EntityEvents {
             world.game.chat.inputLine.setY(110);
 
             inventory.setEquipListener((cell, targetSlot) -> {
-                itemAnimations.stop();
-                bowTensing = false;
-                blocking = false;
-                itemAnimations.removeMovie("handheld-down");
-                itemAnimations.removeMovie("handheld-left");
-                itemAnimations.removeMovie("handheld-up");
-                itemAnimations.removeMovie("handheld-right");
-                itemAnimations.removeMovie("sword-left");
-                itemAnimations.removeMovie("sword-right");
-                itemAnimations.stop();
                 if (cell != null) {
-                   if (targetSlot != -1) {
+                   if (targetSlot == 3) {
+                       bowTensing = false;
+                       blocking = false;
+                       itemAnimations.removeMovie("handheld-down");
+                       itemAnimations.removeMovie("handheld-left");
+                       itemAnimations.removeMovie("handheld-up");
+                       itemAnimations.removeMovie("handheld-right");
+                       itemAnimations.removeMovie("sword-left");
+                       itemAnimations.removeMovie("sword-right");
+                       itemAnimations.stop();
+
                         if (cell.itemRoot.data.animation != null) {//Load the Item animation here...
                             if (cell.itemRoot.data.useType == ItemValues.UseType.SWORD) { //Like in /textures/player/README.txt, index 0 is left and index 1 is right
                                 if (cell.itemRoot.data.animation.regions.length > 0) {
                                     String[] frames = cell.itemRoot.data.animation.regions[0];
-                                    if (frames.length >= 3)
-                                        itemAnimations.addMovie("sword-left", new Movie(10, itemAtlas, frames[0], frames[1], frames[2], frames[2]));
+                                    if (frames.length >= 4) {
+                                        Movie m = new Movie(animation.getMovie("melee-left").frameRate);
+                                        for (String frame : frames) m.addRegion(frame, itemAtlas);
+                                        itemAnimations.addMovie("sword-left", m);
+                                    }
                                 }
                                 if (cell.itemRoot.data.animation.regions.length >= 1) {
                                     String[] frames = cell.itemRoot.data.animation.regions[1];
-                                    if (frames.length >= 3)
-                                        itemAnimations.addMovie("sword-right", new Movie(10, itemAtlas, frames[0], frames[1], frames[2], frames[2]));
+                                    if (frames.length >= 4) {
+                                        Movie m = new Movie(animation.getMovie("melee-right").frameRate);
+                                        for (String frame : frames) m.addRegion(frame, itemAtlas);
+                                        itemAnimations.addMovie("sword-right", m);
+                                    }
                                 }
                             } else if (cell.itemRoot.data.useType == ItemValues.UseType.HANDHELD) {
                                 if (cell.itemRoot.data.animation.regions.length >= 4) {
@@ -163,7 +169,7 @@ public class Player extends Behavior implements EntityEvents {
                     }
                 }
                 if (cell == null) parent.removeBehavior("torch");
-                inventory.itemInfo.setDisplay(cell);
+                inventory.itemInfo.setDisplay(cell.itemRoot, cell);
                 inventory.itemInfo.setVisible(false);
             });
             inventory.loadInventory(object.getWorld().game);
@@ -181,6 +187,7 @@ public class Player extends Behavior implements EntityEvents {
         entity.barVisible = false;
         entity.name = "";
         inventory.healthbar.setValue((float) entity.health / (float) entity.maxHealth);
+        if(entity.health < 0) isDead = true;
     }
 
     @Override
@@ -191,6 +198,15 @@ public class Player extends Behavior implements EntityEvents {
     boolean attackPressed = false;
     @Override
     public void onUpdate(World world, WorldObject object, float deltaTime) {
+        if(isDead) {
+            if(camRot <= 45) {
+                camRot += deltaTime * 45;
+                world.getViewport().rotate(deltaTime);
+                world.getViewport().zoom -= 0.01f * deltaTime;
+            }
+            return;
+        }
+
         boolean gotHit = animation.getCurrentId().equals("hit-left") ||  animation.getCurrentId().equals("hit-right");
         inventory.setVisible(!world.game.dialog.dialog.isVisible());
 
@@ -201,7 +217,7 @@ public class Player extends Behavior implements EntityEvents {
             itemAnimations.stop();
         }
 
-        if (!world.game.dialog.dialog.isVisible() && !Main.debug.debugMode && !object.getWorld().game.chat.isShowed()) {
+        if (!world.game.dialog.dialog.isVisible() && !Main.debug.debugMode && !object.getWorld().game.chat.isShowed() && !inventory.isInventoryOpened()) {
             blocking = false;
             if(!(Gdx.input.isButtonPressed(Input.Buttons.RIGHT) || attacking || attackPressed) && bowTensing) {
                if(itemAnimations.getFrameIndex() > 0) {
@@ -273,7 +289,7 @@ public class Player extends Behavior implements EntityEvents {
                 upPressed = true;
                 noKeyPressed = false;
                 object.move(0, 1, bowTensing ? speed*.4f : speed*.8f);
-                if(!blocking && !bowTensing && useType != ItemValues.UseType.HANDHELD && useType != ItemValues.UseType.BOW) animation.play("walk-up");
+                if(!blocking && !bowTensing && useType != ItemValues.UseType.HANDHELD) animation.play("walk-up");
                 else if(!bowTensing) {
                     animation.play("handheld-walk-up");
                     itemAnimations.play("handheld-up");
@@ -283,7 +299,7 @@ public class Player extends Behavior implements EntityEvents {
                 downPressed = true;
                 noKeyPressed = false;
                 object.move(0, -1, bowTensing ? speed*.4f : speed*.8f);
-                if(!blocking && !bowTensing && useType != ItemValues.UseType.HANDHELD && useType != ItemValues.UseType.BOW) animation.play("walk-down");
+                if(!blocking && !bowTensing && useType != ItemValues.UseType.HANDHELD) animation.play("walk-down");
                 else if(!bowTensing) {
                     animation.play("handheld-walk-down");
                     itemAnimations.play("handheld-down");
@@ -294,7 +310,7 @@ public class Player extends Behavior implements EntityEvents {
                 noKeyPressed = false;
                 object.move(-1, upPressed ? 1 : (downPressed ? -1 : 0), bowTensing ? speed*.5f : speed);
                 if(!upPressed && !downPressed && !blocking && !bowTensing) {
-                    if(useType != ItemValues.UseType.HANDHELD && !bowTensing && useType != ItemValues.UseType.BOW) animation.play("walk-left");
+                    if(useType != ItemValues.UseType.HANDHELD && !bowTensing) animation.play("walk-left");
                     else if (!bowTensing) {
                         animation.play("handheld-walk-left");
                         itemAnimations.play("handheld-left");
@@ -305,7 +321,7 @@ public class Player extends Behavior implements EntityEvents {
                 noKeyPressed = false;
                 object.move(1, upPressed ? 1 : (downPressed ? -1 : 0), bowTensing ? speed*.5f : speed);
                 if(!upPressed && !downPressed && !blocking && !bowTensing) {
-                    if(useType != ItemValues.UseType.HANDHELD && !bowTensing && useType != ItemValues.UseType.BOW) animation.play("walk-right");
+                    if(useType != ItemValues.UseType.HANDHELD && !bowTensing) animation.play("walk-right");
                     else if (!bowTensing) {
                         animation.play("handheld-walk-right");
                         itemAnimations.play("handheld-right");
@@ -362,11 +378,11 @@ public class Player extends Behavior implements EntityEvents {
 
                 if (mouse.x > parent.getX() * world.getScale() ){//&& mouse.y > bottomHeight && mouse.y < topHeight) {
                     animation.play("melee-right");
-                    itemAnimations.play("sword-right");
+                    itemAnimations.playMajor("sword-right", 1);
                     side = 3;
                 } else if(mouse.x < parent.getX()*world.getScale() ){//&& mouse.y > bottomHeight && mouse.y < topHeight) {
                     animation.play("melee-left");
-                    itemAnimations.play("sword-left");
+                    itemAnimations.playMajor("sword-left", 1);
                     side = 1;
                 }
             }
@@ -380,30 +396,32 @@ public class Player extends Behavior implements EntityEvents {
 
                 world.shake.shake(0.6f, 0.1f, true);
                 for(WorldObject w : attackList) {
-                    if(!w.equals(object) && w.dist(object) < 35 && !w.isFixed()) {
+                    if(!w.equals(object) && w.dist(object) < 40) {
                         float perfectAngle = w.getPosition().sub(parent.getPosition()).nor().angle();
                         float actualAngle = attackDirection.angle();
                         float angleDiff = (actualAngle - perfectAngle + 180 + 360) % 360 - 180;
 
-                        if(angleDiff <= 70 && angleDiff >= -70) {
+                        if(angleDiff <= 90 && angleDiff >= -90) {
                             w.applyForce(attackDirection.x * 15, attackDirection.y * 15);
 
-                            if (w.getBehavior("entity") instanceof EntityEvents) {
+                            for(Behavior b : w.getBehavior()) {
+                                if (b instanceof EntityEvents) {
+                                    final boolean crit = isCrit(inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).crit_chance);
+                                    parent.getWorld().shake.resetTimer(0);
+                                    if (parent.getWorld().shake.getDuration() >= 1)
+                                        parent.getWorld().shake.resetDuration(1);
 
-                                final boolean crit = isCrit(inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).crit_chance);
-                                parent.getWorld().shake.resetTimer(0);
-                                if(parent.getWorld().shake.getDuration() >= 1) parent.getWorld().shake.resetDuration(1);
+                                    try {
+                                        w.invokeMethod(b.getID(), "onHit", parent, crit ? -inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).crit_damage : -inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).base_damage, attackDirection.x * 8, attackDirection.y * 8);
+                                        world.particleSystem.addParticle(new HitParticle(parent.getX() + attackDirection.x * 34, parent.getY() + attackDirection.y * 34, 100, null));
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
 
-                                try {
-                                    w.invokeMethod("entity", "onHit", parent, crit ? -inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).crit_damage : -inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).base_damage, attackDirection.x * 8, attackDirection.y * 8);
-                                    world.particleSystem.addParticle(new HitParticle(parent.getX()+attackDirection.x*34, parent.getY()+attackDirection.y*34, 100, null));
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                                if (crit) {
-                                    parent.getWorld().shake.shake(1, 0.5f, false);
-                                    world.particleSystem.addParticle(new com.mygdx.particles.HitmarkerParticle(parent.getX(), parent.getY(), new com.mygdx.particles.HitmarkerParticlePool("Crit!", true)));
+                                    if (crit) {
+                                        parent.getWorld().shake.shake(1, 0.5f, false);
+                                        world.particleSystem.addParticle(new com.mygdx.particles.HitmarkerParticle(parent.getX(), parent.getY(), new com.mygdx.particles.HitmarkerParticlePool("Crit!", true)));
+                                    }
                                 }
                             }
                         }
@@ -454,12 +472,19 @@ public class Player extends Behavior implements EntityEvents {
         if(itemAnimations.getCurrentFrame() != null) {
             float sizeX = parent.getSize().x * world.getScale() * parent.getScale() * world.getPPM();
             float sizeY = parent.getSize().y * world.getScale() * parent.getScale() * world.getPPM();
+            float rotation = parent.getRotation();
+//            if(inventory.getEquippedItem().data.useType == ItemValues.UseType.BOW) {
+//                float dx = world.getMousePos().sub(parent.getPosition().scl(world.getScale())).x;
+//                float dy = world.getMousePos().sub(parent.getPosition().scl(world.getScale())).y;
+//                rotation = (float) Math.toDegrees(Math.atan2(dy, dx));
+//                if(rotation < 0)rotation += 360;
+//            }
             batch.draw(itemAnimations.getCurrentFrame(),   //Dude this was pain...
                     parent.getX() * world.getScale() - sizeX * .5f - parent.getRootValues().values.textureOffset.x,
                     parent.getY() * world.getScale() - sizeY * .5f - parent.getRootValues().values.textureOffset.y,
-                    sizeX * .5f + parent.getRootValues().values.textureOffset.x,
-                    sizeY * .5f + parent.getRootValues().values.textureOffset.y,
-                    sizeX, sizeY, 1.25f, 1.25f, parent.getRotation());
+                    sizeX * .5f + parent.getRootValues().values.textureOffset.x,// + (inventory.getEquippedItem().data.useType == ItemValues.UseType.BOW ? 1*world.getScale() : 0),
+                    sizeY * .5f + parent.getRootValues().values.textureOffset.y,// + (inventory.getEquippedItem().data.useType == ItemValues.UseType.BOW ? -5*world.getScale() : 0),
+                    sizeX, sizeY, 1.85f, 1.85f, rotation);
         }
     }
 
@@ -480,9 +505,14 @@ public class Player extends Behavior implements EntityEvents {
         }
     }
 
+    float camRot = 0;
+    public void die() {
+        isDead = true;
+    }
+
     @Override
     public void onHit(WorldObject source, Integer addHealth, Float knockbackX, Float knockbackY) {
-        if(source != null) {
+        if(source != null || isDead) {
             blocking = false;
             if(animation.getCurrentId().equals("block-left") || animation.getCurrentId().equals("block-right")) {
                 world.particleSystem.addParticle(new com.mygdx.particles.HitmarkerParticle(parent.getX(), parent.getY(), new com.mygdx.particles.HitmarkerParticlePool("Blocked", true)));
@@ -501,12 +531,7 @@ public class Player extends Behavior implements EntityEvents {
 
             if((int) Behavior.getVariable(parent.getBehavior("data"), "health") <= 0) {
                 parent.getWorld().game.chat.post("Player", "died", true);
-                parent.setPosition(Float.valueOf(parent.getHashWrapper().getString("respawnX")), Float.valueOf(parent.getHashWrapper().getString("respawnY")));
-                try {
-                    Behavior.setVariable(parent.getBehavior("data"), "health", 1000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+               die();
             }
         }
     }

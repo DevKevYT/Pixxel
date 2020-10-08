@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.animation.Movie;
 import com.mygdx.animation.SpriteAnimation;
+import com.mygdx.items.Item;
+import com.mygdx.items.ItemValues;
 import com.mygdx.objects.Behavior;
 import com.mygdx.objects.RootValues;
 import com.mygdx.objects.World;
@@ -174,6 +176,7 @@ public class Bat extends Behavior implements EntityEvents {
                 animation.removeMovie("despawn");
                 animation.addMovie("despawn", Entity.entityDespawn);
                 animation.playMajor("despawn", 1);
+                Item.dropItem(Item.getItem("xp"), new ItemValues.ItemCellData(), world, parent.getX(), parent.getY());
             } else {
                 if(source.getX() < parent.getX()) {
                     animation.playMajor("hit-left", 1);

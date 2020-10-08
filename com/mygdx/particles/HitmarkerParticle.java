@@ -41,7 +41,7 @@ public class HitmarkerParticle extends Particle<HitmarkerParticlePool> {
         setX(getX() + xSpeed*delta);
         ySpeed -= gravity*delta*2; //should do a whole arc nice
         setY(getY() + ySpeed*delta);
-        if(fontSize < 35) fontSize += delta*61*2;
+        if(fontSize < 20) fontSize += delta*61*2;
     }
 
     @Override

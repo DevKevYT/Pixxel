@@ -4,6 +4,8 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.behavior.WorldItem;
 import com.mygdx.darkdawn.Logger;
@@ -20,6 +22,7 @@ public class Item {
     public ItemValues.ItemData data; //Root data
     protected FileHandle file;
     private Sprite icon;
+    private Drawable drawableIcon; //Icon as drawable to use it more easily in gui's
 
     public Item(ItemValues.ItemData data) {
         this.data = data;
@@ -43,11 +46,25 @@ public class Item {
 
     public Sprite loadIcon() {
         if(icon != null) return icon;
+        Logger.logInfo("Item", "Loading item");
         FileHandle test = canLoadIcon();
         if(test == null) return null;
         else {
             icon =  new Sprite(new Texture(test));
+            drawableIcon = new SpriteDrawable(icon);
             return icon;
+        }
+    }
+
+    public Drawable loadDrawableIcon() {
+        if(drawableIcon != null) return drawableIcon;
+        Logger.logInfo("", "Loading item icon");
+        FileHandle test = canLoadIcon();
+        if(test == null) return null;
+        else {
+            icon =  new Sprite(new Texture(test));
+            drawableIcon = new SpriteDrawable(icon);
+            return drawableIcon;
         }
     }
 

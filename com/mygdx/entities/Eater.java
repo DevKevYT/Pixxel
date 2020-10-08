@@ -176,7 +176,10 @@ public class Eater extends Behavior implements EntityEvents {
         data.quantity = 1;
         data.id = "iron_nugget";
         data.level = 0;
-        Item.dropItem(Item.getItem("iron_nugget"), data, world, parent.getX(), parent.getY());
+        Item.dropItem(Item.getItem("basic-string"), data, world, parent.getX(), parent.getY());
+       // for(int i = 0; i < 3; i++) {
+            Item.dropItem(Item.getItem("xp"), data, world, parent.getX(), parent.getY());
+       // }
     }
 
     @Override

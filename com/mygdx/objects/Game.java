@@ -22,6 +22,7 @@ import com.mygdx.objects.GameValues.GameData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Game implements Disposable {
 
@@ -150,14 +151,14 @@ public class Game implements Disposable {
     private void loadLibrary() {
          Logger.logInfo("Game", "Loading object files...");
          FileHandle file = null;
-         for (int i = 0; i < game.root.size(); i++) {
-             String path = game.root.get(i);
+         for (int i = 0; i < game.assets.size(); i++) {
+             String path = game.assets.get(i);
                  if(path.startsWith(FileHandler.ABSOLUTE)) file = Gdx.files.external(path.substring(1));
                  else file = Gdx.files.local(path);
                  if (!file.isDirectory() && file.exists() && file.path().endsWith(".json")) {
                      try {
                          Logger.logInfo("Game", "Loading: " + file.path());
-                         RootObject obj = new RootObject(FileHandler.readJSON(file, RootValues.RootObjectValues.class));
+                         RootObject obj = new RootObject(Objects.requireNonNull(FileHandler.readJSON(file, RootValues.RootObjectValues.class)));
                          obj.file = file;
                          obj.loadTexture();
                          library.add(obj);

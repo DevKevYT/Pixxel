@@ -186,7 +186,14 @@ public class Trigger {
 		execute();
 	}
 
-	private void execute() {
+	/**Fires an event with the custom event variable name $event == eventName*/
+	public void customEvent(String eventName) {
+		process.removeVariable("event");
+		process.setVariable("event", eventName, true, true);
+		execute();
+	}
+
+	public void execute() {
 		if(process.isRunning()) return;
 		try {
 			executing = true;

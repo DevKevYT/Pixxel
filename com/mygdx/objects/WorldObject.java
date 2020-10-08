@@ -613,6 +613,21 @@ public class WorldObject implements Disposable {
 		}
 	}
 
+	public void setBlendingColor(Color color) {
+		setBlendingColor(color.r, color.g, color.b, color.a);
+	}
+
+	public void setBlendingColor(float r, float g, float b, float a) {
+		worldObjectValues.change.r = r;
+		worldObjectValues.change.g = g;
+		worldObjectValues.change.b = b;
+		worldObjectValues.change.a = a;
+		rootObject.values.r = r;
+		rootObject.values.g = g;
+		rootObject.values.b = b;
+		rootObject.values.a = a;
+	}
+
 	/**Assumes the batch.begin() function is already called.<br>
 	 * If the object is not added in a world, call {@link WorldObject#draw(SpriteBatch, World)}*/
 	public final void draw(SpriteBatch batch) {
@@ -638,7 +653,7 @@ public class WorldObject implements Disposable {
 
 	/**Makes rendering an object possible, event when is was not added to a world*/
 	public final void draw(SpriteBatch batch, World world) {
-		batch.setColor(1, 1, 1, 1);
+		batch.setColor(rootObject.values.r, rootObject.values.g, rootObject.values.b, rootObject.values.a);
 
 		for(Behavior b : behaviors) {
 			if(b.isEnabled()) b.drawBehind(this, batch);

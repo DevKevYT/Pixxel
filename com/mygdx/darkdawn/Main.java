@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.ai.GraphData;
 import com.mygdx.darkdawn.GenerateScriptFunctions.GenerateCommands;
 import com.mygdx.engineUtils.DebugWindow;
+import com.mygdx.items.Blueprint;
 import com.mygdx.items.Item;
 import com.mygdx.items.ItemValues;
 import com.mygdx.objects.Behavior;
@@ -39,6 +40,8 @@ public class Main extends ApplicationAdapter {
 	public static Cursor default_cursor;
 	@Override
 	public void create () {
+		Behavior.findBehaviors();
+
 		Skin skin = new Skin();
 		skin.addRegions(new TextureAtlas(Gdx.files.internal("UI//uiskin.atlas")));
 		skin.addRegions(new TextureAtlas(Gdx.files.internal("UI//gameui.atlas")));
@@ -51,16 +54,17 @@ public class Main extends ApplicationAdapter {
 
 		debug = new DebugWindow(game, game.getLibrary(), skin);
 
-		inputs = new InputMultiplexer();
-		inputs.addProcessor(debug.stage);
-		inputs.addProcessor(game.gui);
-		Gdx.input.setInputProcessor(inputs);
+		//inputs = new InputMultiplexer();
+		//inputs.addProcessor(debug.stage);
+		//inputs.addProcessor(game.gui);
+		Gdx.input.setInputProcessor(game.gui);
 
 		Pixmap p = new Pixmap(Gdx.files.internal("UI//default-cursor.png"));
 		default_cursor = Gdx.graphics.newCursor(p, 5, 6);
 		Gdx.graphics.setCursor(default_cursor);
 
 		Item.loadItemLibrary(Gdx.files.internal("local/items/items.json"));
+		Blueprint.loadBlueprints(Gdx.files.internal("local/items/blueprints.json"));
 	}
 
 	@Override
@@ -78,7 +82,7 @@ public class Main extends ApplicationAdapter {
 		debug.update();
 
 		if(Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && Gdx.input.isKeyJustPressed(Keys.F3)) {
-			game.chat.hideCmd();
+			//game.chat.hideCmd();
 			debug.setDebug(!debug.debugMode);
 		}
 		if(Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && Gdx.input.isKeyJustPressed(Keys.T)) {

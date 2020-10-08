@@ -162,7 +162,7 @@ public interface RootValues {
 		public Vector2 size = new Vector2();  //Size of the object. Manipulated by the scale. (-1 = tile size -0.5 = Half of tile size -2 = Twice the tilesize. (-1 for both is just 0) (Done in checkSize() in RootObject class)
 		                                      //0 at y or y = scale image | (x or y) < 0 = scale of tile size
 		public Vector2 textureOffset = new Vector2(); //Offset
-		
+		public float r = 1, g = 1, b = 1, a = 1;
 		//Body definition
 		public boolean fixedRotation = false;
 		public int type = DYNAMIC; //0 = Dynamic 1 = Static
@@ -206,6 +206,10 @@ public interface RootValues {
 			copy.yOff = yOff;
 			if(light != null) copy.light = light.copy();
 			copy.loadType = loadType;
+			copy.r = r;
+			copy.g = g;
+			copy.b = b;
+			copy.a = a;
 			return copy;
 		}
 
@@ -234,6 +238,10 @@ public interface RootValues {
 			if(values.light != null) light = values.light.copy();
 			if(values.trigger != null) trigger = values.trigger;
 			if(values.initRotation != 0) initRotation = values.initRotation;
+			if(values.r != 1) r = values.r;
+			if(values.g != 1) g = values.g;
+			if(values.b != 1) b = values.b;
+			if(values.a != 1) a = values.a;
 		}
 		
 		/**Loads values from a JSON file.

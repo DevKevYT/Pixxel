@@ -55,7 +55,7 @@ public interface ItemValues {
         public String icon = ""; //Name of the icon file in the same directory
         public Rarity rarity = Rarity.COMMON;
         public int maxStack = 999;
-
+        public float destroyTime = 3; //Seconds
         public int targetSlot = 0; //0, 1, 2, 3=main weapon If the target slot is 3, a use type needs to get implemented: SWORD or ITEM
 
         public UseType useType = UseType.HANDHELD;
@@ -96,6 +96,26 @@ public interface ItemValues {
         RARE,
         LEGENDARY,
         MYSTIC
+    }
+
+    enum Category {
+        SWORD, BOW, ITEM, CONSUMABLE
+    }
+
+    public class Recipe {
+        public String targetID = "missing";
+        public int xp = 0;
+        public Category category = Category.SWORD;
+        public ArrayList<Requirements> requirements = new ArrayList<>();
+    }
+
+    public class Requirements {
+        public String itemID = "missing";
+        public int amount = -1;
+    }
+
+    public class BlueprintValues {
+        public ArrayList<Recipe> list = new ArrayList<>();
     }
 
     public class ItemCellData {  //What the player has in his inventory

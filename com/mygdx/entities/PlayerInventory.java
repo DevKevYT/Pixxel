@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -16,31 +15,38 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Disposable;
 import com.mygdx.darkdawn.Logger;
 import com.mygdx.darkdawn.Main;
+import com.mygdx.items.Blueprint;
 import com.mygdx.items.Item;
 import com.mygdx.items.ItemValues;
 import com.mygdx.objects.Game;
-import com.mygdx.objects.GameValues;
 import com.mygdx.ui.ItemInfo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class PlayerInventory {
 
     public ItemInfo itemInfo;
     private Game game;
+    private boolean inventoryOpened = false;
+    private Table xpDisplay;
+    public int xp = 0;
+    private Label xpCount;
 
     private Stage stage;
     private Skin skin;
@@ -54,6 +60,10 @@ public class PlayerInventory {
     private Table inventory;
     private Image inventoryBackground;
     private boolean isVisible = true;
+
+    private float recipesPadding = 10;
+    private Table recipesDisplay;
+    private ScrollPane recipesScrollpane;
 
     private final static String[] hotbar_cellNames = new String[]{"cell1", "cell2", "cell3"};
     private final int inventorySizeX = 4;
@@ -149,7 +159,7 @@ public class PlayerInventory {
             quantity.setFontScale(0.3f);
             super.addListener(new ChangeListener() {
                 public void changed(ChangeEvent event, Actor actor) {
-                    if(hotbarLocation == -1 && getActions().size == 0) {
+                    if(hotbarLocation == -1 && getActions().size == 0 && itemRoot.data.targetSlot >= 0 && itemRoot.data.targetSlot <= 3) {
                         swapItem(hotbarCells[itemRoot.data.targetSlot]);
                     }
                 }
@@ -287,20 +297,27 @@ public class PlayerInventory {
         inventoryBackground.setVisible(false);
         inv.addActor(inventoryBackground);
 
+        recipesDisplay = new Table(skin);
+        recipesDisplay.align(Align.left);
+        recipesScrollpane = new ScrollPane(recipesDisplay);
+        inv.addActor(recipesScrollpane);
+
         inventory.setBounds(hotbar.getX(), stage.getHeight() / 2, hotbar.getWidth(), inventory.getHeight());
         inventory.setY(inventory.getY() - inventory.getHeight() / 2);
         inv.addActor(inventory);
 
         stage.addListener(new InputListener() {
-
             InputProcessor prev = null;
             @Override
             public boolean keyUp(InputEvent event, int keycode) {
                 if(keycode == Input.Keys.TAB && isVisible && !Main.debug.debugMode) {
+                    inventoryOpened = false;
                     itemInfo.setDisplay(null);
                     inventory.setVisible(false);
                     inventoryBackground.setVisible(false);
                     inventory.clearActions();
+                    recipesDisplay.setVisible(false);
+                    itemInfo.setDisplay(null);
                     Gdx.input.setInputProcessor(prev);
                 }
                 return true;
@@ -309,6 +326,7 @@ public class PlayerInventory {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if(keycode == Input.Keys.TAB && isVisible && !Main.debug.debugMode) {
+                    inventoryOpened = true;
                     inventory.setVisible(true);
                     inventoryBackground.setVisible(true);
                     inventory.addAction(new Action() {
@@ -325,6 +343,9 @@ public class PlayerInventory {
                             if(x > PlayerInventory.this.x || speed < 0.1f) {
                                 inventory.setX(PlayerInventory.this.x);
                                 inventoryBackground.setBounds(0, inventory.getY() - 100, stage.getWidth(), 200);
+                                recipesDisplay.setBounds(inventory.getWidth() + inventory.getX() + recipesPadding*2, inventoryBackground.getY()+recipesPadding, inventoryBackground.getWidth() - inventory.getWidth() - inventory.getX(), inventoryBackground.getHeight()-recipesPadding*4);
+                                recipesScrollpane.setBounds(recipesDisplay.getX(), inventoryBackground.getY(), inventoryBackground.getWidth() - recipesDisplay.getX() - recipesPadding, inventoryBackground.getHeight());
+                                displayRecipes(Blueprint.blueprintLibrary);
                                 return true;
                             } return false;
                         }
@@ -339,9 +360,164 @@ public class PlayerInventory {
         stage.addActor(inv);
 
         itemInfo = new ItemInfo(game, stage, skin);
+
+        xpDisplay = new Table(skin);
+        xpDisplay.align(Align.topLeft);
+        xpDisplay.setPosition(hotbar.getX(), stage.getHeight() - 10);
+        Image icon = new Image(skin.getDrawable("xp-display-icon"));
+        xpDisplay.add(icon).height(cellSize*0.7f).width(cellSize*0.7f);
+        xpCount = new Label("", skin, "itemInfo");
+        xpCount.setFontScale(0.5f);
+        xpDisplay.add(xpCount).align(Align.center);
+        stage.addActor(xpDisplay);
+    }
+
+    /**Displays the selected recipes beneath the inventory slots*/
+    public void displayRecipes(ArrayList<Blueprint> recipes) {
+        recipesDisplay.clearChildren();
+        for(int i = 0; i < recipes.size(); i++) {
+            final Item data = Item.getItem(recipes.get(i).recipe.targetID);
+            final Blueprint blueprint = recipes.get(i);
+            Table content = new Table(skin);
+            Table itemFrame = new Table(skin);
+            itemFrame.setBackground(skin.getDrawable("item-slot-common"));
+            Image targetItem = new Image(Item.getItem(recipes.get(i).recipe.targetID).loadIcon());
+            itemFrame.add(targetItem).width(cellSize).height(cellSize);
+            itemFrame.pack();
+            content.add(itemFrame).align(Align.topLeft).width(cellSize).height(cellSize).pad(3);
+            Table xpRequirements = new Table(skin);
+            xpRequirements.add(new Label("Need:", skin, "itemInfo")).align(Align.topLeft).colspan(2).getActor().setFontScale(ItemInfo.FONT_SCALE*1.2f);
+            xpRequirements.row();
+            Image xpImage = new Image(skin.getDrawable("xp-display-icon"));
+            xpRequirements.add(xpImage).width(cellSize*.5f).height(cellSize*.5f).align(Align.left);
+            xpRequirements.add(new Label("x " + recipes.get(i).recipe.xp, skin, "itemInfo")).getActor().setFontScale(ItemInfo.FONT_SCALE);
+            content.add(xpRequirements).align(Align.topLeft);
+            content.row();
+            content.add(new Label(data.data.name, skin, "itemInfo")).colspan(2).getActor().setFontScale(ItemInfo.FONT_SCALE);
+            content.row();
+            Table requirements = new Table(skin);
+            requirements.align(Align.left);
+            ArrayList<Label> itemReq = new ArrayList<>(blueprint.recipe.requirements.size());
+            for(int j = 0; j < recipes.get(i).recipe.requirements.size(); j++) {
+                Table frame = new Table(skin);
+                Image req = new Image(Item.getItem(recipes.get(i).recipe.requirements.get(j).itemID).loadIcon());
+                frame.add(req).width(cellSize*.6f).height(cellSize*.6f);
+                frame.setBackground(skin.getDrawable("item-slot-common"));
+                frame.pack();
+                requirements.add(frame).width(cellSize*.7f).height(cellSize*.7f).align(Align.left).padTop(2);
+                itemReq.add(new Label("x " + recipes.get(i).recipe.requirements.get(j).amount, skin, "itemInfo"));
+                requirements.add(itemReq.get(itemReq.size()-1)).padTop(2).align(Align.center).expandX().getActor().setFontScale(ItemInfo.FONT_SCALE);
+                requirements.row();
+            }
+            content.add(requirements).align(Align.center).colspan(2).align(Align.center).fillX();
+            content.align(Align.topLeft);
+            content.setBackground(skin.getDrawable("item-info-common"));
+            content.pad(10);
+            content.row();
+            content.setColor(ItemInfo.getRarityColor(data.data.rarity));
+            Cell c = recipesDisplay.add(content).width(content.getPrefWidth()).height(inventoryBackground.getHeight()-recipesPadding*2).align(Align.center).padTop(recipesPadding).padBottom(recipesPadding).padLeft(5).padRight(5);
+            content.addAction(new Action() {
+                Vector2 mouse = new Vector2();
+                Vector2 local = new Vector2();
+                final Color originalColor = content.getColor().cpy();
+                float cOffset = 0;
+                boolean wasOn = false;
+                boolean canCraft = false;
+                @Override
+                public boolean act(float delta) {
+                    if(!inventoryOpened) return true;
+
+                    mouse.set(Gdx.input.getX(), Gdx.input.getY());
+                    local.set(content.screenToLocalCoordinates(mouse));
+                    if(local.x > 0 && local.x < content.getWidth() && local.y > 0 && local.y < content.getHeight()) {
+                        if(!wasOn) {
+                            canCraft = xp >= blueprint.recipe.xp;
+                            updateRecipe(blueprint, itemReq);
+                            for(ItemValues.Requirements r : blueprint.recipe.requirements) {
+                                if(getAmountOf(r.itemID) < r.amount) {
+                                    canCraft = false;
+                                    break;
+                                }
+                            }
+                        }
+                        wasOn = true;
+                        if(canCraft) {
+                            itemInfo.setDisplay(data, null);
+                            if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+                                itemInfo.progessBar.setVisible(true);
+                                itemInfo.progessBar.setColor(Color.GREEN);
+                                itemInfo.progessBar.setValue(itemInfo.progessBar.getValue() + (delta / (data.data.destroyTime*.5f)));
+                                if (itemInfo.progessBar.getValue() == itemInfo.progessBar.getMaxValue()) {
+                                    itemInfo.progessBar.setValue(0);
+                                    itemInfo.progessBar.setVisible(false);
+                                    ItemValues.ItemCellData newItem = new ItemValues.ItemCellData();
+                                    newItem.id = data.data.id;
+                                    newItem.level = 0;
+                                    newItem.quantity = 1;
+                                    give(newItem);
+                                    giveXP(-blueprint.recipe.xp);
+                                    wasOn = false;
+                                    for(ItemValues.Requirements r : blueprint.recipe.requirements) {
+                                        remove(r.itemID, r.amount);
+                                    }
+                                    updateRecipe(blueprint, itemReq);
+                                }
+                            } else {
+                                itemInfo.progessBar.setValue(0);
+                                itemInfo.progessBar.setVisible(false);
+                                itemInfo.progessBar.setColor(Color.RED);
+                            }
+                            if (cOffset <= 0.2f) cOffset += delta;
+                            else cOffset = 0.2f;
+                            content.setColor(originalColor.r - cOffset, originalColor.g - cOffset, originalColor.b - cOffset, 1);
+                        } else {
+                            itemInfo.setDisplay(null, null);
+                            itemInfo.progessBar.setColor(Color.RED);
+                        }
+                    } else {
+                        canCraft = false;
+                        if(wasOn) {
+                            for(Label l : itemReq) {
+                                for(ItemValues.Requirements r : blueprint.recipe.requirements) {
+                                    l.setText("x " + r.amount);
+                                    l.setColor(Color.WHITE);
+                                }
+                            }
+                        }
+                        wasOn = false;
+                        content.setColor(originalColor);
+                        cOffset = 0;
+                    }
+                    return false;
+                }
+            });
+        }
+        recipesDisplay.clearActions();
+        recipesDisplay.setVisible(true);
+        recipesDisplay.setColor(1, 1, 1, 0f);
+        recipesDisplay.addAction(new Action() {
+            float a = 0;
+            @Override
+            public boolean act(float delta) {
+                a += delta*2;
+                recipesDisplay.setColor(1, 1, 1, a);
+                return a >= 1;
+            }
+        });
+    }
+
+    private void updateRecipe(Blueprint blueprint, ArrayList<Label> itemReq) {
+        for (int i = 0; i < blueprint.recipe.requirements.size(); i++) {
+            int amount = getAmountOf(blueprint.recipe.requirements.get(i).itemID);
+            itemReq.get(i).setText(amount + " / " + blueprint.recipe.requirements.get(i).amount);
+            if(blueprint.recipe.requirements.get(i).amount > amount) {
+                itemReq.get(i).setColor(Color.RED);
+            } else itemReq.get(i).setColor(Color.GREEN);
+        }
     }
 
     public void update() {
+        xpCount.setText("x" + xp);
         if(!inventory.isVisible()) return;
 
         itemInfo.act(Gdx.graphics.getDeltaTime());
@@ -365,6 +541,45 @@ public class PlayerInventory {
             }
         }
         if(!anythingHit) itemInfo.setDisplay(null);
+    }
+
+    public void remove(String id, int amount) {
+        for(int i = 0; i < hotbarCells.length; i++) {
+            if(hotbarCells[i].itemRoot != null) {
+                if (hotbarCells[i].itemRoot.data.id.equals(id) && hotbarCells[i].cellData.quantity >= amount) {
+                    hotbarCells[i].cellData.quantity -= amount;
+                    if(hotbarCells[i].cellData.quantity <= 0) hotbarCells[i].dismantle();
+                    return;
+                }
+            }
+        }
+
+        for(int i = 0; i < inventorySizeX; i++) {
+            for(int j = 0; j < inventorySizeY; j++) {
+                if(inventoryCells[i][j].itemRoot != null) {
+                    if (inventoryCells[i][j].itemRoot.data.id.equals(id) && inventoryCells[i][j].cellData.quantity >= amount) {
+                        inventoryCells[i][j].cellData.quantity -= amount;
+                        if(inventoryCells[i][j].cellData.quantity <= 0) inventoryCells[i][j].dismantle();
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public int getAmountOf(String itemID) {
+        int amount = 0;
+        ItemCell[] cells = getAllCells();
+        for(ItemCell c : cells) {
+            if(c.itemRoot.data.id.equals(itemID)) amount += c.cellData.quantity;
+        }
+        return amount;
+    }
+
+    public ItemCell[] getAllCells() {
+        ArrayList<ItemCell> cells = new ArrayList<>(Arrays.asList(hotbarCells));
+        for(int i = 0; i < inventorySizeX; i++) cells.addAll(Arrays.asList(inventoryCells[i]));
+        return cells.toArray(new ItemCell[cells.size()]);
     }
 
     public boolean has(String id, int minCount) {
@@ -409,6 +624,7 @@ public class PlayerInventory {
             for(int j = 0; j < inventorySizeY; j++) {
                     if (inventoryCells[i][j].itemRoot.data.id.equals(cellData.id) && inventoryCells[i][j].cellData.quantity + cellData.quantity <= inventoryCells[i][j].itemRoot.data.maxStack) {
                         inventoryCells[i][j].cellData.quantity += cellData.quantity;
+                        inventoryCells[i][j].addAction( inventoryCells[i][j].animation);
                         return true;
                     }
             }
@@ -416,6 +632,7 @@ public class PlayerInventory {
         for(ItemCell cell : hotbarCells) {
             if(cell.itemRoot.data.id.equals(cellData.id) && cell.cellData.quantity + cellData.quantity <= cell.itemRoot.data.maxStack) {
                 cell.cellData.quantity += cellData.quantity;
+                cell.addAction(cell.animation);
                 return true;
             }
         }
@@ -428,6 +645,7 @@ public class PlayerInventory {
                     inventoryCells[i][j].itemRoot = item;
                     inventoryCells[i][j].cellData = ItemValues.ItemCellData.copy(cellData);
                     inventoryCells[i][j].loadIcon();
+                    inventoryCells[i][j].addAction(inventoryCells[i][j].animation);
                     return true;
                 }
             }
@@ -437,6 +655,7 @@ public class PlayerInventory {
                 cell.itemRoot = item;
                 cell.cellData = ItemValues.ItemCellData.copy(cellData);
                 cell.loadIcon();
+                cell.addAction(cell.animation);
                 return true;
             }
         }
@@ -474,6 +693,10 @@ public class PlayerInventory {
                 }
             }
         }
+        String amount = game.hashData.get("xp");
+        xpCount.setText(amount == null ? "x 0" : "x " + amount);
+        if(amount != null) xp = Integer.valueOf(amount);
+        else xp = 0;
     }
 
     public void saveInventory(Game game) {
@@ -485,6 +708,25 @@ public class PlayerInventory {
                 game.setCustomData("cell" + i + "-" + j, inventoryCells[i][j].cellData, ItemValues.ItemCellData.class);
             }
         }
+        game.hashData.set("xp", String.valueOf(xp));
+    }
+
+    public void giveXP(int amount) {
+        xpCount.clearActions();
+        xp += amount;
+        xpCount.addAction(new Action() {
+            float scale = 0.9f;
+            public boolean act(float delta) {
+                xpCount.setFontScale(scale);
+                scale -= delta;
+                if(scale <= 0.5f) {
+                    xpCount.setFontScale(0.5f);
+                    scale = 1f;
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     public Item getEquippedItem() {
@@ -496,11 +738,16 @@ public class PlayerInventory {
     }
 
     public void dispose() {
+        xpDisplay.remove();
         inv.remove();
         hotbar.remove();
         healthbar.remove();
         hotbarTable.remove(); //Table of the hotbar cells beside the bix main weapon
         inventory.remove();
+    }
+
+    public boolean isInventoryOpened() {
+        return inventoryOpened;
     }
 
     public void setVisible(boolean visible) {

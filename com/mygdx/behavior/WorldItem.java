@@ -69,17 +69,22 @@ public class WorldItem extends Behavior {
                     if(b instanceof Player) {
                         if(item != null) {
                             Player p = (Player) b;
-                            ItemValues.ItemCellData data = new ItemValues.ItemCellData();
-                            data.id = item.data.id;
-                            data.level = level;
-                            data.quantity = quantity;
-                            if(p.inventory.give(data)) {
-                                world.removeObject(parent);
-                                parent.getHitboxBody().setLinearVelocity(0, 0);
+                            if(item.data.id.equals("xp")) {
+                                p.inventory.giveXP(12);
                             } else {
-                                speed = 0;
-                                spreaded = false;
-                                return;
+                                ItemValues.ItemCellData data = new ItemValues.ItemCellData();
+                                data.id = item.data.id;
+                                data.level = level;
+                                data.quantity = quantity;
+
+                                if (p.inventory.give(data)) {
+                                    world.removeObject(parent);
+                                    parent.getHitboxBody().setLinearVelocity(0, 0);
+                                } else {
+                                    speed = 0;
+                                    spreaded = false;
+                                    return;
+                                }
                             }
                         }
                         world.removeObject(parent);
@@ -115,6 +120,14 @@ public class WorldItem extends Behavior {
             light.g = Color.GOLD.g;
             light.b = Color.GOLD.b;
         }
+
+        if(item.data.id.equals("xp")) {
+            light.r = 0;
+            light.g = 1;
+            light.b = 0;
+            light.a = 0.7f;
+        }
+
         light.dist = 30;
         light.rays = 20;
         light.xray = true;

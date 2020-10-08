@@ -217,6 +217,10 @@ public interface WorldValues {
 			if(!change.fixed) object.values.fixed = change.fixed; //TODO filtering data
 			if(change.trigger != null) object.values.trigger = change.trigger;
 			object.values.fixedRotation = change.fixedRotation;
+			if(change.r != 1) object.values.r = change.r;
+			if(change.g != 1) object.values.g = change.g;
+			if(change.b != 1) object.values.b = change.b;
+			if(change.a != 1) object.values.a = change.a;
 		}
 		
 		/**Compares two {@link RootObject}'s and returns a new one with just the changes set.
@@ -239,6 +243,10 @@ public interface WorldValues {
 			if(obj1.values.yOff != obj2.values.yOff) change.yOff = obj1.values.yOff;
 			if(obj1.values.animation != null) change.animation = obj1.values.animation.copy();
 			if(obj1.values.light != null) change.light = obj1.values.light.copy();
+			if(obj1.values.r != 1) change.r = obj1.values.r;
+			if(obj1.values.g != 1) change.g = obj1.values.r;
+			if(obj1.values.b != 1) change.b = obj1.values.r;
+			if(obj1.values.a != 1) change.a = obj1.values.r;
 			return change;
 		}
 	}

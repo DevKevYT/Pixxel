@@ -11,6 +11,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Cursor;
@@ -1405,6 +1406,7 @@ public class DebugWindow implements Disposable {
 	private Label selectedValue;
 	SelectBox<String> classes;
 	private Table tabs;
+	private TextField id;
 
 	private void initEditBehaviorWindow() {
 		editBehavior = new Window("EDIT BEHAVIOR", skin);
@@ -1456,26 +1458,45 @@ public class DebugWindow implements Disposable {
 		});
 		setVar.add(set).align(Align.center).padTop(20);
 		stage.addActor(setVar);
+
+		id = new TextField("", skin);
+		id.setMaxLength(10);
+		classes = new SelectBox<>(skin);
+		Array<String> a = new Array<>();
+		for (Class<?> c : Behavior.BEHAVIOR_CLASSES) {
+			a.add(c.getName());
+		}
+		if(!classes.getItems().isEmpty()) id.setText(classes.getItems().get(0));
+		classes.setItems(a);
+		classes.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				id.setText(Behavior.BEHAVIOR_CLASSES.get(classes.getSelectedIndex()).getSimpleName());
+			}
+		});
+
+		TextButton close = new TextButton("X", skin);
+		close.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				editBehavior.setVisible(false);
+			}
+		});
+		close.toFront();
+		editBehavior.getTitleTable().add(close).padRight(5).height(15).align(Align.right).getActor().setColor(Color.RED);
 	}
 
 	public void setBehaviorTabs(WorldObject object) {
+		Vector2 prevPos = new Vector2(editBehavior.getX(), editBehavior.getY());
 		if (editBehavior != null) editBehavior.remove();
 		editBehavior = new Window("EDIT BEHAVIOR", skin);
 		stage.addActor(editBehavior);
 		tabs.clearChildren();
 		editBehavior.add("ID:").align(Align.left).padRight(5);
-		TextField id = new TextField("", skin);
-		id.setMaxLength(10);
 		editBehavior.add(id).align(Align.left).width(100).padRight(5);
 		editBehavior.add("Classpath:").align(Align.left).padRight(5);
 		//TextField classPath = new TextField("", skin);
 		//editBehavior.add(classPath).width(200).align(Align.left).fillX();
-		classes = new SelectBox<String>(skin);
-		Array<String> a = new Array<>();
-		for (Class<?> c : Behavior.BEHAVIOR_CLASSES) {
-			a.add(c.getName());
-		}
-		classes.setItems(a);
+
 		editBehavior.add(classes).width(280).align(Align.left).fillX();
 		TextButton add = new TextButton("Add", skin);
 		add.addListener(new ChangeListener() {
@@ -1562,14 +1583,7 @@ public class DebugWindow implements Disposable {
 		editBehavior.add(pane).colspan(4).width(editBehavior.getPrefWidth()).height(100).align(Align.top);
 		editBehavior.setWidth(editBehavior.getPrefWidth());
 		editBehavior.setHeight(pane.getHeight());
-		TextButton close = new TextButton("X", skin);
-		close.addListener(new ChangeListener() {
-			public void changed(ChangeEvent event, Actor actor) {
-				editBehavior.setVisible(false);
-			}
-		});
-		close.toFront();
-		editBehavior.getTitleTable().add(close).padRight(5).height(15).align(Align.right).getActor().setColor(Color.RED);
+		editBehavior.setPosition(prevPos.x, prevPos.y);
 	}
 
 	private Tree main;
@@ -1625,13 +1639,14 @@ public class DebugWindow implements Disposable {
 		return table;
 	}
 
-
-	public void setDebug(boolean debug) {
+	InputProcessor prev;
+	public void  setDebug(boolean debug) {
 		debugMode = debug;
 		this.window.setVisible(debug);
 
 		if(debug) {
-			//Gdx.input.setInputProcessor(stage);
+			prev = Gdx.input.getInputProcessor();
+			Gdx.input.setInputProcessor(stage);
 			game.stage.getWorldData().viewport.center = false;
 			viewportZoom = game.stage.getViewport().zoom;
 			viewportPos = game.stage.getViewport().position;
@@ -1640,7 +1655,7 @@ public class DebugWindow implements Disposable {
 		} else {
 			game.stage.getWorldData().viewport.center = true;
 			stage.unfocusAll();
-			//Gdx.input.setInputProcessor(null);
+			Gdx.input.setInputProcessor(prev);
 			debugPos.set(game.stage.getViewport().position);
 			debugZoom = game.stage.getViewport().zoom;
 			game.stage.getViewport().position.set(viewportPos);

@@ -18,7 +18,7 @@ public interface GameValues {
     public class GameData {
         public CustomData custom = new CustomData();
         public ArrayList<String> worlds = new ArrayList<>();
-        public ArrayList<String> root = new ArrayList<>();
+        public ArrayList<String> assets = new ArrayList<>();
         public ArrayList<RootValues.Variable> hashData = new ArrayList<>();
 
         public GameData(){}
