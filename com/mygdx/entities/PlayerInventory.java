@@ -25,11 +25,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.darkdawn.Logger;
 import com.mygdx.darkdawn.Main;
 import com.mygdx.items.Blueprint;
+import com.mygdx.items.Effect;
 import com.mygdx.items.Item;
 import com.mygdx.items.ItemValues;
 import com.mygdx.objects.Game;
@@ -43,6 +45,7 @@ public class PlayerInventory {
 
     public ItemInfo itemInfo;
     private Game game;
+    private Player player;
     private boolean inventoryOpened = false;
     private Table xpDisplay;
     public int xp = 0;
@@ -59,19 +62,28 @@ public class PlayerInventory {
     private Table hotbarTable; //Table of the hotbar cells beside the bix main weapon
     private Table inventory;
     private Image inventoryBackground;
+    private Label inventoryTitle;
     private boolean isVisible = true;
 
     private float recipesPadding = 10;
     private Table recipesDisplay;
     private ScrollPane recipesScrollpane;
 
+    private Table effects;
+    private InputProcessor prev = null;
+
+    private Group itemGiveDisplay;
+    class GiveItemCell extends Image {
+
+    }
+
     private final static String[] hotbar_cellNames = new String[]{"cell1", "cell2", "cell3"};
     private final int inventorySizeX = 4;
     private final int inventorySizeY = 5;
-    private ItemCell[][] inventoryCells = new ItemCell[inventorySizeX][inventorySizeY];
-    private ItemCell[] hotbarCells = new ItemCell[4]; //Main weapon = hotbarCells[hotbarCells.length-1]
+    public ItemCell[][] inventoryCells = new ItemCell[inventorySizeX][inventorySizeY];
+    public ItemCell[] hotbarCells = new ItemCell[4]; //Main weapon = hotbarCells[hotbarCells.length-1]
     private EquipListener equipListener = new EquipListener() {
-        public void equip(ItemCell itemCell, int cell) {}
+        public void equip(ItemCell itemCell, int cell, ItemCell old) {}
     };
 
     private static Sprite swapForeground;
@@ -83,7 +95,7 @@ public class PlayerInventory {
     }
 
     interface EquipListener {
-        void equip(ItemCell itemCell, int cell);
+        void equip(ItemCell itemCell, int cell, ItemCell old);
     }
 
     public class ItemCell extends ImageButton {
@@ -99,6 +111,7 @@ public class PlayerInventory {
         private float animationFrameYOffset = 0;
         private float animationFrameHeight = 2*scale;
         private volatile boolean animationDone = true;
+        public ArrayList<Effect> boundEffects = new ArrayList<>();
 
         public Action animation = new Action() {
             boolean up = false;
@@ -183,7 +196,7 @@ public class PlayerInventory {
                this.cellData = tempCellData;
             }
 
-            equipListener.equip(other, other.itemRoot.data.targetSlot);
+            equipListener.equip(other, other.itemRoot.data.targetSlot, this);
             other.addAction(other.animation);
             addAction(animation);
         }
@@ -199,9 +212,11 @@ public class PlayerInventory {
         }
 
         public void dismantle() {
+            if(hotbarLocation == 3) equipListener.equip(null, 3, null);
             cellData = new ItemValues.ItemCellData();
             itemRoot = new Item(new ItemValues.ItemData());
-            if(hotbarLocation == 3) equipListener.equip(null, 3);
+            for(Effect e : boundEffects) player.removeEffect(e);
+            boundEffects.clear();
             loadIcon();
         }
 
@@ -210,7 +225,7 @@ public class PlayerInventory {
             itemSprite.setPosition(getX()  + itemSpriteOffsetX + 2*scale, getY() + itemSpriteOffsetY + 2*scale);
 
             if(cellData != null && !itemRoot.data.id.equals("missing")) {
-                itemSprite.draw(batch, parentAlpha);
+                if(itemSprite != null) itemSprite.draw(batch, parentAlpha);
 
                 if(animationDone && cellData.quantity > 1) {
                     quantity.setText(cellData.quantity);
@@ -241,12 +256,13 @@ public class PlayerInventory {
      * There need to be some drawables registered in the skin file:
      * cell-background
      * healthbar*/
-    public PlayerInventory(Game game, float x, float y) {
+    public PlayerInventory(Game game, Player player, float x, float y) {
         this.skin = game.resource;
         this.game = game;
         this.stage = game.gui;
         this.x = x;
         this.y = y;
+        this.player = player;
         init();
     }
 
@@ -291,11 +307,17 @@ public class PlayerInventory {
             inventory.row();
         }
         inventoryBackground = new Image(skin.getDrawable("item-info-common"));
-        inventoryBackground.setHeight(200);
+        inventoryBackground.setHeight(230);
         inventoryBackground.setPosition(0, stage.getHeight() / 2 - 100);
         inventoryBackground.setWidth(stage.getWidth());
         inventoryBackground.setVisible(false);
         inv.addActor(inventoryBackground);
+
+        inventoryTitle = new Label("Inventory", skin, "itemInfo");
+        inventoryTitle.setAlignment(Align.left);
+        inventoryTitle.setFontScale(ItemInfo.FONT_SCALE + 0.1f);
+        inventoryTitle.setVisible(false);
+        inv.addActor(inventoryTitle);
 
         recipesDisplay = new Table(skin);
         recipesDisplay.align(Align.left);
@@ -306,52 +328,26 @@ public class PlayerInventory {
         inventory.setY(inventory.getY() - inventory.getHeight() / 2);
         inv.addActor(inventory);
 
+        effects = new Table(skin);
+        effects.align(Align.bottomLeft);
+        effects.setBounds(hotbar.getX(), inventoryBackground.getY(), stage.getWidth() - hotbar.getX(), 100);
+        effects.toBack();
+        inv.addActor(effects);
+
         stage.addListener(new InputListener() {
-            InputProcessor prev = null;
+
             @Override
             public boolean keyUp(InputEvent event, int keycode) {
-                if(keycode == Input.Keys.TAB && isVisible && !Main.debug.debugMode) {
-                    inventoryOpened = false;
-                    itemInfo.setDisplay(null);
-                    inventory.setVisible(false);
-                    inventoryBackground.setVisible(false);
-                    inventory.clearActions();
-                    recipesDisplay.setVisible(false);
-                    itemInfo.setDisplay(null);
-                    Gdx.input.setInputProcessor(prev);
-                }
+
                 return true;
             }
 
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if(keycode == Input.Keys.TAB && isVisible && !Main.debug.debugMode) {
-                    inventoryOpened = true;
-                    inventory.setVisible(true);
-                    inventoryBackground.setVisible(true);
-                    inventory.addAction(new Action() {
-                        float x = -inventory.getWidth();
-                        float bgx = -stage.getWidth();
-                        @Override
-                        public boolean act(float delta) {
-                            inventory.setX(x);
-                            inventoryBackground.setX(bgx);
-                            float speed = (PlayerInventory.this.x  - x)*0.2f;
-                            float bgSpeed = (-bgx)*0.2f;
-                            x += speed;
-                            bgx += bgSpeed;
-                            if(x > PlayerInventory.this.x || speed < 0.1f) {
-                                inventory.setX(PlayerInventory.this.x);
-                                inventoryBackground.setBounds(0, inventory.getY() - 100, stage.getWidth(), 200);
-                                recipesDisplay.setBounds(inventory.getWidth() + inventory.getX() + recipesPadding*2, inventoryBackground.getY()+recipesPadding, inventoryBackground.getWidth() - inventory.getWidth() - inventory.getX(), inventoryBackground.getHeight()-recipesPadding*4);
-                                recipesScrollpane.setBounds(recipesDisplay.getX(), inventoryBackground.getY(), inventoryBackground.getWidth() - recipesDisplay.getX() - recipesPadding, inventoryBackground.getHeight());
-                                displayRecipes(Blueprint.blueprintLibrary);
-                                return true;
-                            } return false;
-                        }
-                    });
-                    prev = Gdx.input.getInputProcessor();
-                    Gdx.input.setInputProcessor(stage);
+                if(keycode == Input.Keys.TAB && isVisible && !Main.debug.debugMode && !inventoryOpened) {
+                    openInventory("Inventory", Blueprint.blueprintLibrary);
+                } else if(keycode == Input.Keys.TAB && isVisible && !Main.debug.debugMode && inventoryOpened) {
+                    closeInventory();
                 }
                 return true;
             }
@@ -370,6 +366,54 @@ public class PlayerInventory {
         xpCount.setFontScale(0.5f);
         xpDisplay.add(xpCount).align(Align.center);
         stage.addActor(xpDisplay);
+
+        itemGiveDisplay = new Group();
+        itemGiveDisplay.setBounds(0, hotbar.getY() + hotbar.getHeight(), stage.getWidth(), cellSize);
+        stage.addActor(itemGiveDisplay);
+    }
+
+    public void openInventory(String title, ArrayList<Blueprint> recipes) {
+        inventoryOpened = true;
+        inventory.setVisible(true);
+        inventoryBackground.setVisible(true);
+        inventory.addAction(new Action() {
+            float x = -inventory.getWidth();
+            float bgx = -stage.getWidth();
+            @Override
+            public boolean act(float delta) {
+                inventory.setX(x);
+                inventoryBackground.setX(bgx);
+                float speed = (PlayerInventory.this.x  - x)*0.2f;
+                float bgSpeed = (-bgx)*0.2f;
+                x += speed;
+                bgx += bgSpeed;
+                if(x > PlayerInventory.this.x || speed < 0.1f) {
+                    inventory.setX(PlayerInventory.this.x);
+                    inventoryBackground.setBounds(0, inventory.getY() - 100, stage.getWidth(), 230);
+                    recipesDisplay.setBounds(inventory.getWidth() + inventory.getX() + recipesPadding*2, inventoryBackground.getY()+recipesPadding, inventoryBackground.getWidth() - inventory.getWidth() - inventory.getX(), inventoryBackground.getHeight()-recipesPadding*4);
+                    recipesScrollpane.setBounds(recipesDisplay.getX(), inventoryBackground.getY(), inventoryBackground.getWidth() - recipesDisplay.getX() - recipesPadding, inventoryBackground.getHeight());
+                    inventoryTitle.setText(title);
+                    inventoryTitle.setBounds(inventoryBackground.getX() + 10, inventoryBackground.getY() + inventoryBackground.getHeight() - 30, inventory.getWidth(), 20);
+                    inventoryTitle.setVisible(true);
+                    displayRecipes(recipes);
+                    return true;
+                } return false;
+            }
+        });
+        prev = Gdx.input.getInputProcessor();
+        Gdx.input.setInputProcessor(stage);
+    }
+
+    public void closeInventory() {
+        inventoryOpened = false;
+        itemInfo.setDisplay(null);
+        inventory.setVisible(false);
+        inventoryBackground.setVisible(false);
+        inventory.clearActions();
+        recipesDisplay.setVisible(false);
+        inventoryTitle.setVisible(false);
+        itemInfo.setDisplay(null);
+        Gdx.input.setInputProcessor(prev);
     }
 
     /**Displays the selected recipes beneath the inventory slots*/
@@ -516,8 +560,44 @@ public class PlayerInventory {
         }
     }
 
+    /**@param time - time in seconds
+     * @returns the time converted in the format MINUTES:SECONDS (#:##)*/
+    private String toTimeFormat(float time) {
+        int minutes = (int) ((time % 3600) / 60);
+        int seconds = (int) (time % 60);
+        return String.format("%d:%02d", minutes, seconds).replace(" ", "0");
+    }
+
     public void update() {
+        //Update here
+        //Now display them centered!
+        for(int i = 0; i < newItemDisplay.size(); i++) {
+            newItemDisplay.get(i).x = -((newItemDisplay.size()-1) * cellSize + (newItemDisplay.size()-1) * 5) / 2 + (i * cellSize + i * 5);
+        }
+
         xpCount.setText("x" + xp);
+        if(player.effectUpdated()) {
+            effects.clear();
+            for(Effect e : player.getActiveEffects()) {
+                if(e.getData().icon != null) {
+                    Image icon = new Image(e.getData().icon);
+                    effects.add(icon).width(15).height(15);
+                } else effects.add(" ").width(15).height(15);
+                Label name = new Label(e.getData().id  + " " + (e.stacked > 1 ? "x" + e.stacked : ""), skin, "itemInfo");
+                name.setFontScale(ItemInfo.FONT_SCALE);
+                effects.add(name).padLeft(5).align(Align.left);
+                if(e.getDuration() > 0) {
+                    name.addAction(new Action() {
+                        public boolean act(float delta) {
+                            name.setText(e.getData().id + " " + (e.stacked > 1 ? "x" + e.stacked : "") + " " + toTimeFormat(e.getTime()));
+                            return false;
+                        }
+                    });
+                }
+                effects.row();
+            }
+            effects.toBack();
+        }
         if(!inventory.isVisible()) return;
 
         itemInfo.act(Gdx.graphics.getDeltaTime());
@@ -610,7 +690,7 @@ public class PlayerInventory {
     }
 
     public void clear() {
-        equipListener.equip(null, -1);
+        equipListener.equip(null, -1, null);
         for(int i = 0; i < inventorySizeX; i++) {
             for(int j = 0; j < inventorySizeY; j++) {
                inventoryCells[i][j].clear();
@@ -625,6 +705,7 @@ public class PlayerInventory {
                     if (inventoryCells[i][j].itemRoot.data.id.equals(cellData.id) && inventoryCells[i][j].cellData.quantity + cellData.quantity <= inventoryCells[i][j].itemRoot.data.maxStack) {
                         inventoryCells[i][j].cellData.quantity += cellData.quantity;
                         inventoryCells[i][j].addAction( inventoryCells[i][j].animation);
+                        giveAnimation(inventoryCells[i][j]);
                         return true;
                     }
             }
@@ -633,6 +714,7 @@ public class PlayerInventory {
             if(cell.itemRoot.data.id.equals(cellData.id) && cell.cellData.quantity + cellData.quantity <= cell.itemRoot.data.maxStack) {
                 cell.cellData.quantity += cellData.quantity;
                 cell.addAction(cell.animation);
+                giveAnimation(cell);
                 return true;
             }
         }
@@ -646,6 +728,7 @@ public class PlayerInventory {
                     inventoryCells[i][j].cellData = ItemValues.ItemCellData.copy(cellData);
                     inventoryCells[i][j].loadIcon();
                     inventoryCells[i][j].addAction(inventoryCells[i][j].animation);
+                    giveAnimation(inventoryCells[i][j]);
                     return true;
                 }
             }
@@ -656,11 +739,93 @@ public class PlayerInventory {
                 cell.cellData = ItemValues.ItemCellData.copy(cellData);
                 cell.loadIcon();
                 cell.addAction(cell.animation);
+                giveAnimation(cell);
                 return true;
             }
         }
 
         return false;
+    }
+
+    class NewItemDisplay {
+        Group itemCell;
+        float x;
+    }
+    ArrayList<NewItemDisplay> newItemDisplay = new ArrayList<>();
+    private void giveAnimation(ItemCell cell) {
+        Gdx.app.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                Group itemCell = new Group();
+                itemCell.setBounds(itemGiveDisplay.getWidth() / 2f, cellSize / 2f, cellSize, cellSize);
+
+                Image background = new Image(skin.getDrawable("cell-background"));
+                //background.setColor(ItemInfo.getRarityColor(cell.itemRoot.data));
+                background.setScale(ItemCell.scale);
+                background.setSize(cellSize / ItemCell.scale, cellSize / ItemCell.scale);
+                itemCell.addActor(background);
+
+                Image image = new Image(cell.itemSprite.getDrawable());
+                image.setBounds(2*ItemCell.scale, 2*ItemCell.scale, cellSize - 4*ItemCell.scale, cellSize - 4*ItemCell.scale);
+                itemCell.addActor(image);
+
+                Image effect = new Image(skin.getDrawable("newitem-effect"));
+                effect.setSize(cellSize * 2, cellSize * 2);
+                effect.setColor(ItemInfo.getRarityColor(cell.itemRoot.data.rarity));
+                itemGiveDisplay.addActor(effect);
+
+                final NewItemDisplay n = new NewItemDisplay();
+                n.itemCell = itemCell;
+                n.x = newItemDisplay.size() * cellSize + newItemDisplay.size() + 5;
+                newItemDisplay.add(n);
+
+                image.addAction(new Action() {
+                    float time = 0;
+                    float alpha = 1;
+                    float sizeScale = 0;
+                    boolean scaled = false;
+                    float y = 0;
+
+                    float effectScale = 0;
+                    float effectAcc = 1;
+                    @Override
+                    public boolean act(float delta) {
+                        if(sizeScale < 1 && !scaled) sizeScale += delta * 10; //0.5 seconds
+                        else {
+                            scaled = true;
+                            sizeScale = 1;
+                        }
+                        if(scaled)  time += delta;
+                        if(time > 3 && scaled) { //5 seconds
+                            y += 2*time*0.1f;
+                            image.setColor(1, 1, 1, alpha);
+                            itemCell.setColor(1, 1, 1, alpha);
+                            alpha -= delta * 3;
+                        }
+                        if(alpha < 0) {
+                            newItemDisplay.remove(n);
+                            itemGiveDisplay.removeActor(itemCell);
+                            return true;
+                        }
+
+                        image.setScale(sizeScale * .9f);
+                        itemCell.setX(n.x + itemGiveDisplay.getWidth() / 2f - (sizeScale*cellSize) / 2f);
+                        itemCell.setY((cellSize / 2f) - (sizeScale*cellSize) / 2f - y);
+
+                        effectScale += delta * 3 * effectAcc; //0.5 seconds
+                        effect.setScale(effectScale);
+                        effect.setColor(effect.getColor().r, effect.getColor().g, effect.getColor().b, effectAcc);
+                        effect.setPosition(-(cellSize * effectScale) + cellSize / 2f + n.itemCell.getX(), -(cellSize * effectScale) + cellSize / 2f);
+                        effectAcc -= delta;
+                        if(effectAcc <= 0) itemGiveDisplay.removeActor(effect);
+
+                        return false;
+                    }
+                });
+
+                itemGiveDisplay.addActor(itemCell);
+            }
+        });
     }
 
     public void setEquipListener(EquipListener equipListener) {
@@ -681,7 +846,7 @@ public class PlayerInventory {
             if(hotbarCells[i].cellData != null) {
                 hotbarCells[i].itemRoot = Item.getItem(hotbarCells[i].cellData.id);
                 hotbarCells[i].loadIcon();
-                if (!hotbarCells[i].itemRoot.data.id.equals("missing")) equipListener.equip(hotbarCells[i], i);
+                if (!hotbarCells[i].itemRoot.data.id.equals("missing")) equipListener.equip(hotbarCells[i], i, null);
             }
         }
         for(int i = 0; i < inventorySizeX; i++) {

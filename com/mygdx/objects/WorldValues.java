@@ -63,7 +63,7 @@ public interface WorldValues {
 	public final class TriggerValues {
 		public String scr = "";
 		public String messageText = "";
-		public boolean tileCheck = false;
+		public ArrayList<String> joinFilter = new ArrayList<>(); //Object addresses, separated by a ','
 		public ArrayList<Integer> keys = new ArrayList<Integer>(1);
 
 		public TriggerValues() {
@@ -75,7 +75,7 @@ public interface WorldValues {
 			cpy.keys.addAll(keys);
 			cpy.scr = scr;
 			cpy.messageText = messageText;
-			cpy.tileCheck = tileCheck;
+			cpy.joinFilter.addAll(joinFilter);
 			return cpy;
 		}
 	}
@@ -126,7 +126,7 @@ public interface WorldValues {
 	
 	public final class WorldObjectValues {
 		public String id = "missing";  //The name. The Root object must be extra set
-		public String addr = "";
+		public String addr = ""; //Addresses can only contain upper and lowercase letters and numbers. No special chars
 		public float x = 0;
 		public float y = 0;
 		//public float yOff = 0;  //Y offset for layers -> Moved to root objects

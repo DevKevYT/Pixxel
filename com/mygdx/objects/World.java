@@ -45,7 +45,6 @@ public final class World implements Disposable {
 	public ArrayList<Chunk> loadedChunks = new ArrayList<>();
 	private int startX=0, startY=0, endX=0, endY=0;
 	private int centerX=-1, centerY=-1;
-	private volatile boolean renderLocked = false;
 
 	private WorldData worldData;
 	private float width = 0;
@@ -239,7 +238,7 @@ public final class World implements Disposable {
 	}
 
 	public WorldObject[] getObjectsByAddress(String addr) {
-		if(addr.equals(WorldObject.NO_ADDR) || addr.equals(WorldObject.TILE_ADDR)) return null;
+		if(addr.equals(WorldObject.NO_ADDR) || addr.equals(WorldObject.TILE_ADDR)) return new WorldObject[]{};
 		ArrayList<WorldObject> objects = new ArrayList<>(0);
 
 		for(WorldObject obj : objectsWithAddress) {
@@ -263,7 +262,7 @@ public final class World implements Disposable {
 	public boolean save() {
 		Logger.logInfo("World", "Saving world");
 		try {
-			if(file != null) FileHandler.writeJSON(file, getFullData(), true);
+			if(file != null) FileHandler.writeJSON(file, getFullData(), false);
 			else return false;
 		} catch (IOException e) {
 			Logger.logError("World", "World failed to save: " + e.getMessage());
@@ -404,7 +403,6 @@ public final class World implements Disposable {
 
 	public boolean objectMoved = false;
 	public void draw(float delta) {
-		renderLocked = false;
 
 		if(objectMoved) renderedObjects.clear();
 		batch.setProjectionMatrix(viewport.combined);
@@ -585,7 +583,6 @@ public final class World implements Disposable {
 	
 	//Core function for adding objects!
 	public WorldObject addObject(WorldObjectValues values, RootObject root) {
-		renderLocked = true;
 		//if(!root.textureLoaded()) root.loadTexture();
 		WorldObject worldObject = new WorldObject(values, root);  //Prepare to add object
 
@@ -597,7 +594,6 @@ public final class World implements Disposable {
 		if(!address.equals(WorldObject.NO_ADDR)) objectsWithAddress.add(worldObject);
 
 		Chunk c = estimateChunk(values.x, values.y);
-		c.attachObject(worldObject);
 		c.attachObject(worldObject);
 
 		totalObjects.add(worldObject);  //Already add object to totalObjects, so non added objects later remain registered

@@ -3,6 +3,7 @@ package com.mygdx.darkdawn;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Application;
@@ -26,6 +27,9 @@ import com.mygdx.entities.Bat;
 import com.mygdx.entities.Eater;
 import com.mygdx.entities.Player;
 import com.mygdx.files.JsonHandler;
+import com.mygdx.items.Blueprint;
+import com.mygdx.items.Effect;
+import com.mygdx.items.EffectData;
 import com.mygdx.items.Item;
 import com.mygdx.items.ItemValues;
 import com.mygdx.objects.Behavior;
@@ -115,6 +119,7 @@ public interface GenerateScriptFunctions {
 								return Main.game.stage.getViewport().zoom;
 							} else if (arg0.equals("instantfocus") && args.length >= 1) {
 								WorldObject obj = (WorldObject) args[1];
+								obj.getWorld().cameraFocus = obj;
 								Vector2 pos = obj.getPosition().scl(obj.getWorld().getScale());
 								obj.getWorld().getViewport().position.set(pos.x, pos.y, 0);
 							} else if (arg0.equals("getfocus")) {
@@ -427,7 +432,8 @@ public interface GenerateScriptFunctions {
 						public Object execute(Object[] args, Process process, Block block) throws Exception {
 							WorldValues.TriggerValues values = new WorldValues.TriggerValues();
 							values.scr = args[1].toString();
-							values.tileCheck = (boolean) args[4];
+							values.joinFilter.clear();
+							values.joinFilter.addAll(Arrays.asList(args[4].toString().split(",")));
 							values.messageText = args[2].toString();
 							for(Object indices : ((Array) args[3]).getIndexes()) {
 								if(testForInteger(indices.toString())) {
@@ -950,6 +956,61 @@ public interface GenerateScriptFunctions {
 							itemBehavior.quantity = Integer.parseInt(args[4].toString());
 							itemBehavior.level = Integer.parseInt(args[3].toString());
 							w.addBehavior(itemBehavior);
+							return null;
+						}
+					},
+
+					new Command("effect", "obj string string ...", "[object (player)] [add/remove/settime] [effect-id] [duration (0 for infinite)] [attribute]") {
+						@Override
+						public Object execute(Object[] args, Process process, Block block) throws Exception {
+							WorldObject target = (WorldObject) args[0];
+							Player p = null;
+							for(Behavior b : target.getBehavior()) {
+								if(b instanceof Player) {
+									p = (Player) b;
+								}
+							}
+							if(p == null) {
+								process.kill(block, "Target object is not a player!");
+								return null;
+							}
+
+							EffectData data = p.getEffectData(args[2].toString());
+							if(data == null) {
+								process.kill(block, "Effect with id: " + args[2].toString() + " not found!");
+								return null;
+							}
+
+							if(args[1].toString().equals("add") && args.length >= 4) {
+								p.addEffect(data.id, Float.parseFloat(args[3].toString()), Float.parseFloat(args[4].toString()));
+							} else if(args[1].toString().equals("remove")) { //remove
+								p.removeEffect(data.id);
+							}
+							return null;
+						}
+					},
+
+					new Command("openinventory", "obj string string ...", "[player] [title] [blueprints]") {
+						@Override
+						public Object execute(Object[] args, Process process, Block block) throws Exception {
+							WorldObject target = (WorldObject) args[0];
+							Player p = null;
+							for(Behavior b : target.getBehavior()) {
+								if(b instanceof Player) {
+									p = (Player) b;
+								}
+							}
+							if(p == null) {
+								process.kill(block, "Target object is not a player!");
+								return null;
+							}
+							ArrayList<Blueprint> blueprints = new ArrayList<>();
+							for(int i = 2; i < args.length; i++) {
+								for (Blueprint b : Blueprint.blueprintLibrary) {
+									if (b.recipe.targetID.equals(args[i].toString())) blueprints.add(b);
+								}
+							}
+							p.inventory.openInventory(args[1].toString(), blueprints);
 							return null;
 						}
 					}

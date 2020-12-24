@@ -73,7 +73,7 @@ public class KeyTrigger extends Behavior {
         for (int i = 0; i < world.getObjectsWithTrigger().size(); i++) {
             WorldObject trigger = world.getObjectsWithTrigger().get(i);
             if (trigger.getTrigger() != null) {
-                if(!trigger.getTrigger().values.keys.isEmpty() && trigger.touched(object.getPosition())) {
+                if(!trigger.getTrigger().values.keys.isEmpty() && trigger.touched(object.getPosition()) && !trigger.getTrigger().isDisabled()) {
                     keyInfo.setText(trigger.getTrigger().values.messageText);
                     keys.setText(Input.Keys.toString(trigger.getTrigger().values.keys.get(0)));
                     keyUI.setVisible(true);

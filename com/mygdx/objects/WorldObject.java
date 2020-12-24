@@ -53,7 +53,6 @@ public class WorldObject implements Disposable {
 	/**Forces the world to set a random, unique address.*
 	public static final long FORCE_ADDR = 2;*/
 	/**This address is reserved for the player*/
-	public static final String PLAYER_ADDR = "player";
 
 	private Trigger trigger;
 	private boolean moved = false;
@@ -598,6 +597,7 @@ public class WorldObject implements Disposable {
 		worldObjectValues.change.trigger = null;
 	}
 
+	/**@return The new trigger instance*/
 	public final void setTrigger(TriggerValues trigger) {
 		if(trigger == null) {
 			removeTrigger();
@@ -626,6 +626,22 @@ public class WorldObject implements Disposable {
 		rootObject.values.g = g;
 		rootObject.values.b = b;
 		rootObject.values.a = a;
+	}
+
+	public float getR() {
+		return rootObject.values.r;
+	}
+
+	public float getG() {
+		return rootObject.values.g;
+	}
+
+	public float getB() {
+		return rootObject.values.b;
+	}
+
+	public float getA() {
+		return rootObject.values.a;
 	}
 
 	/**Assumes the batch.begin() function is already called.<br>
@@ -875,7 +891,11 @@ public class WorldObject implements Disposable {
 
 		if (getAddress().equals(WorldObject.NO_ADDR) || getAddress().equals(WorldObject.TILE_ADDR)) {
 			world.getObjectWithAddress().remove(this);
-		} else if(getAddress() != WorldObject.NO_ADDR) world.getObjectWithAddress().add(this);
+		} else if(!getAddress().equals(WorldObject.NO_ADDR)) world.getObjectWithAddress().add(this);
+
+		for(WorldObject obj : world.objectsWithTrigger) {
+			obj.getTrigger().refreshJoinTrigger();
+		}
 	}
 
 	public final boolean added() {

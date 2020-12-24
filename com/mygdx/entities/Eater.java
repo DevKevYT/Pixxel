@@ -87,7 +87,7 @@ public class Eater extends Behavior implements EntityEvents {
             entity.name = "SPIDER";
         } else ((Entity) parent.getBehavior("data")).name = "SPIDER";
         parent.setFixedrotation(true);
-        parent.setSize(new Vector2(world.getTileSizeNORM(), world.getTileSizeNORM()));
+        parent.setSize(new Vector2(world.getTileSizeNORM() * 0.6f, world.getTileSizeNORM() * 0.6f));
         prevWidth = parent.getSize().x;
 
 
@@ -202,7 +202,7 @@ public class Eater extends Behavior implements EntityEvents {
             knocked = false;
             meleeCooldown = 0;
             hitStrech = 1;
-            prevWidth = world.getTileSizeNORM();
+            prevWidth = world.getTileSizeNORM() * .6f;
             if((int) Behavior.getVariable(parent.getBehavior("data"), "health") <= 0) {
                 tracked.clear();
                 dead = true;

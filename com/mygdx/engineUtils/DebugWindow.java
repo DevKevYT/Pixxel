@@ -2,7 +2,9 @@ package com.mygdx.engineUtils;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -41,6 +43,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -120,6 +123,8 @@ public class DebugWindow implements Disposable {
 	public boolean showDebug = false;
 	private TextField address;
 	private CheckBox fixedRot;
+
+	private Slider rSlider, gSlider, bSlider, aSlider;
 
 	public DebugWindow(Game game, ArrayList<RootObject> preloaded, Skin skin) {
 		debug = new Box2DDebugRenderer();
@@ -311,8 +316,13 @@ public class DebugWindow implements Disposable {
 					compileInfo.setText("Last output:\n" + worldObjectedit.getTrigger().getErrors());
 					messageText.setText(worldObjectedit.worldObjectValues.change.trigger.messageText);
 					script = worldObjectedit.worldObjectValues.change.trigger.scr;
+
 					triggerScript.setText(script);
-					checkTiles.setChecked(worldObjectedit.getTrigger().values.tileCheck);
+
+					joinFilter.setText("");
+					for(String s : worldObjectedit.getTrigger().values.joinFilter) {
+						joinFilter.setText(joinFilter.getText() + s + ",");
+					}
 					base.removeAll();
 					for(int k :  worldObjectedit.worldObjectValues.change.trigger.keys) {
 						if(k > 0) base.add(new Node(new Label(Keys.toString(k), skin)));
@@ -322,6 +332,7 @@ public class DebugWindow implements Disposable {
 					script = "";
 					triggerScript.setText("");
 					compileInfo.setText("");
+					joinFilter.setText("");
 					base.removeAll();
 				}
 				DebugWindow.this.editTrigger.setPosition(0, 0);
@@ -404,7 +415,7 @@ public class DebugWindow implements Disposable {
 		address.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				for(SelectedObject s : selectedObjects) {
-					s.object.worldObjectValues.addr = address.getText();
+					s.object.setAddress(address.getText());
 
 					if (s.object.getAddress().equals(WorldObject.NO_ADDR) || s.object.getAddress().equals(WorldObject.TILE_ADDR)) {
 						game.stage.getObjectWithAddress().remove(s.object);
@@ -421,7 +432,7 @@ public class DebugWindow implements Disposable {
 			}});
 		leftclickMenue.add(address).width(100).padLeft(10).padRight(10).padTop(2).height(25).align(Align.left).colspan(6).row();
 
-		fixed = new CheckBox("Moveable", skin);
+		fixed = new CheckBox(" Movable", skin);
 		fixed.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				for(SelectedObject s : selectedObjects) {
@@ -429,9 +440,9 @@ public class DebugWindow implements Disposable {
 				}
 			}
 		});
-		leftclickMenue.add(fixed).width(110).padLeft(10).padTop(2).padRight(10).height(20).align(Align.left).colspan(6).row();
+		leftclickMenue.add(fixed).padLeft(10).padTop(2).padRight(10).height(20).align(Align.left).colspan(6).expandX().row();
 		background.dispose();
-		fixedRot = new CheckBox("Fixed Rot.", skin);
+		fixedRot = new CheckBox(" Fixed Rotation", skin);
 		fixedRot.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				for(SelectedObject s : selectedObjects) {
@@ -441,16 +452,69 @@ public class DebugWindow implements Disposable {
 					}
 				}
 			}});
-		visible = new CheckBox("Visible", skin);
+		visible = new CheckBox(" Visible", skin);
 		visible.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				for(SelectedObject s : selectedObjects) {
 					s.object.worldObjectValues.visible = visible.isChecked();
 				}
 			}});
-		leftclickMenue.add(visible).padLeft(10).padRight(10).padTop(2).height(20).width(110).align(Align.left).colspan(6).row();
-		leftclickMenue.add(fixedRot).padLeft(10).padRight(10).padTop(2).height(20).width(110).align(Align.left).colspan(6).padBottom(5).row();
+		leftclickMenue.add(visible).padLeft(10).padRight(10).padTop(2).height(20).align(Align.left).colspan(6).expandX().row();
+		leftclickMenue.add(fixedRot).padLeft(10).padRight(10).padTop(2).height(20).align(Align.left).colspan(6).expandX().padBottom(5).row();
 		//leftclickMenue.setDebug(true);
+		DecimalFormat format = new DecimalFormat("0.00");
+		rSlider = new Slider(0, 1, 0.01f, false, skin);
+		rSlider.setValue(1);
+		gSlider= new Slider(0, 1, 0.01f, false, skin);
+		gSlider.setValue(1);
+		bSlider = new Slider(0, 1, 0.01f, false, skin);
+		bSlider.setValue(1);
+		aSlider = new Slider(0, 1, 0.01f, false, skin);
+		aSlider.setValue(1);
+		Label rLabel = new Label("R (0,00)", skin);
+		rSlider.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				rLabel.setText("R (" + format.format(rSlider.getValue()) + ")");
+				for(SelectedObject s : selectedObjects) {
+					s.object.setBlendingColor(rSlider.getValue(), gSlider.getValue(), bSlider.getValue(), aSlider.getValue());
+				}
+			}
+		});
+		leftclickMenue.add(rLabel).width(55);
+		leftclickMenue.add(rSlider).colspan(5).fillX().height(20).padLeft(10).padRight(10).width(80).row();
+		Label gLabel = new Label("G (0,00)", skin);
+		gSlider.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				gLabel.setText("G (" + format.format(gSlider.getValue()) + ")");
+				for(SelectedObject s : selectedObjects) {
+					s.object.setBlendingColor(rSlider.getValue(), gSlider.getValue(), bSlider.getValue(), aSlider.getValue());
+				}
+			}
+		});
+		leftclickMenue.add(gLabel).width(55);
+		leftclickMenue.add(gSlider).colspan(5).fillX().height(20).padLeft(10).padRight(10).width(80).row();
+		Label bLabel = new Label("B (0,00)", skin);
+		bSlider.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				bLabel.setText("B (" + format.format(bSlider.getValue()) + ")");
+				for(SelectedObject s : selectedObjects) {
+					s.object.setBlendingColor(rSlider.getValue(), gSlider.getValue(), bSlider.getValue(), aSlider.getValue());
+				}
+			}
+		});
+		leftclickMenue.add(bLabel).width(55);
+		leftclickMenue.add(bSlider).colspan(5).fillX().height(20).padLeft(10).padRight(10).width(80).row();
+		Label aLabel = new Label("A (0,00)", skin);
+		aSlider.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				aLabel.setText("A (" + format.format(aSlider.getValue()) + ")");
+				for(SelectedObject s : selectedObjects) {
+					s.object.setBlendingColor(rSlider.getValue(), gSlider.getValue(), bSlider.getValue(), aSlider.getValue());
+				}
+			}
+		});
+		leftclickMenue.add(aLabel).width(55);
+		leftclickMenue.add(aSlider).colspan(5).fillX().height(20).padLeft(10).padRight(10).width(80).row();
 		leftclickMenue.pack();
 		stage.addActor(leftclickMenue);
 
@@ -700,7 +764,7 @@ public class DebugWindow implements Disposable {
 			}
 			if(anyTouched) {
 				Vector2 translate = game.stage.translateTo(game.stage.getMousePos(), false, stage.getCamera());
-				leftclickMenue.setPosition(translate.x, translate.y + (translate.y + leftclickMenue.getHeight() > stage.getCamera().viewportHeight ? -leftclickMenue.getHeight() : 0));
+				leftclickMenue.setPosition(translate.x, (translate.y - leftclickMenue.getPrefHeight() < 0 ? 0 : translate.y - leftclickMenue.getPrefHeight()));
 				leftclickMenue.setVisible(!leftclickMenue.isVisible());
 				if(leftclickMenue.isVisible()) {
 					leftclickMenue.toFront();
@@ -709,6 +773,11 @@ public class DebugWindow implements Disposable {
 						address.setText(selectedObjects.get(0).object.getAddress());
 						fixedRot.setChecked(selectedObjects.get(0).object.getRootValues().values.fixedRotation);
 						visible.setChecked(selectedObjects.get(0).object.worldObjectValues.visible);
+
+						rSlider.setValue(selectedObjects.get(0).object.getR());
+						gSlider.setValue(selectedObjects.get(0).object.getG());
+						bSlider.setValue(selectedObjects.get(0).object.getB());
+						aSlider.setValue(selectedObjects.get(0).object.getA());
 
 						boolean found = false;  //Handling category bits
 						for(String s : category.getItems()) {
@@ -1236,7 +1305,7 @@ public class DebugWindow implements Disposable {
 	private TextArea triggerScript;
 	private Label compileInfo;
 	private TextField messageText;
-	private CheckBox checkTiles;
+	private TextField joinFilter;
 
 	private void intitEditTriggerWindow() {
 		editTrigger = new Window("Edit trigger", skin);
@@ -1261,7 +1330,6 @@ public class DebugWindow implements Disposable {
 				RootObjectValues changed = new RootObjectValues();
 				changed.trigger = new TriggerValues();
 				changed.trigger.scr = script;
-				changed.trigger.tileCheck = checkTiles.isChecked();
 				changed.trigger.messageText = messageText.getText();
 
 				for(Node n : base.getChildren()) {
@@ -1271,7 +1339,17 @@ public class DebugWindow implements Disposable {
 						changed.trigger.keys.add(key);
 					} else changed.trigger.keys.add(Integer.valueOf(l.getText().toString()));
 				}
-				for(SelectedObject s : selectedObjects) s.object.setTrigger(changed.trigger);
+
+				a: for(String addr : joinFilter.getText().trim().split(",")) {
+					for(String j : changed.trigger.joinFilter) {
+						if(j.equals(addr)) continue a;
+					}
+					changed.trigger.joinFilter.add(addr);
+				}
+				for(SelectedObject s : selectedObjects) {
+					s.object.setTrigger(changed.trigger);
+					s.object.getTrigger().refreshJoinTrigger();
+				}
 				compileInfo.setText("Saved");
 				editTrigger.setVisible(false);
 			}});
@@ -1296,6 +1374,7 @@ public class DebugWindow implements Disposable {
 		editTrigger.setVisible(false);
 		compileInfo = new Label("", skin);
 		compileInfo.setAlignment(Align.topLeft);
+		compileInfo.setFontScale(0.5f);
 		ScrollPane p = new ScrollPane(compileInfo);
 		editTrigger.add(p).colspan(2).height(40).align(Align.left).row();
 
@@ -1303,16 +1382,24 @@ public class DebugWindow implements Disposable {
 		messageText = new TextField("", skin);
 		editTrigger.add(messageText).fillX().align(Align.left).row();
 
-		checkTiles = new CheckBox("Join Trigger", skin);
-		checkTiles.addListener(new ChangeListener() {
-			public void changed(ChangeEvent event, Actor actor) {
-				for(SelectedObject s : selectedObjects) {
-					if(s.object.getTrigger() != null) {
-						s.object.getTrigger().values.tileCheck = checkTiles.isChecked();
-					}
-				}
-			}});
-		editTrigger.add(checkTiles).colspan(2).align(Align.left).row();
+		editTrigger.add("Join Filter:").getActor();
+		joinFilter = new TextField("", skin);
+		joinFilter.setMessageText("obj1,obj2,...");
+		joinFilter.setTextFieldFilter(new TextFieldFilter() {
+			public boolean acceptChar(TextField textField, char c) {
+				return Character.isDigit(c) || c == '-' || Character.isLetter(c) || c == ',';
+			}
+		});
+//		checkTiles = new CheckBox("Join Trigger", skin);
+//		checkTiles.addListener(new ChangeListener() {
+//			public void changed(ChangeEvent event, Actor actor) {
+//				for(SelectedObject s : selectedObjects) {
+//					if(s.object.getTrigger() != null) {
+//						s.object.getTrigger().values.tileCheck = checkTiles.isChecked();
+//					}
+//				}
+//			}});
+		editTrigger.add(joinFilter).align(Align.left).row();
 
 		keys = new Tree(skin);
 		base = new Node(new Label("Added keys", skin));

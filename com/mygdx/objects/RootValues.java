@@ -219,7 +219,7 @@ public interface RootValues {
 		public void applyChanges(RootObjectValues values, boolean addArray) {
 			if(!values.texturePath.isEmpty()) texturePath = values.texturePath;
 			if(values.tX != -1) tX = values.tX;
-			if(values.tY != -1) tX = values.tY;
+			if(values.tY != -1) tY = values.tY;
 			if(values.tW != -1) tX = values.tW;
 			if(values.tH != -1) tX = values.tH;
 			if(!values.size.isZero()) size.set(values.size);

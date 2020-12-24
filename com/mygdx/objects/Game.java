@@ -40,8 +40,8 @@ public class Game implements Disposable {
     public ChatBar chat;
     private boolean hasGui = false;
 
-    //public final OrthographicCamera guiViewport; //Viewport for the GUI
     public static final int dpiX = 800;
+    public static final String VERSION = "1.0.0";
 
     public Game(GameData game) {
         stage = new World(this);
@@ -58,13 +58,13 @@ public class Game implements Disposable {
 
     /**Builds the game instance from the given file at initializing*/
     public void build() {
-        Logger.logInfo("Game", "###Initializing game instance...###");
+        Logger.logInfo("Game", "Initializing game instance...");
 
         buildHashData();
         verifyFiles();
         loadLibrary();
 
-        Logger.logInfo("Game", "###Game initialized###");
+        Logger.logInfo("Game", "Game initialized");
     }
 
     public void buildHashData() {
@@ -89,7 +89,7 @@ public class Game implements Disposable {
         gui.addActor(dialog.dialog);
         chat = new ChatBar(this, resource);
         chat.hideCmd();
-        chat.setBounds(10, 40, Gdx.graphics.getWidth()*.75f, 20);
+        chat.setBounds(Gdx.graphics.getWidth()-310, 10, 300, 20);
         gui.addActor(chat);
     }
 
@@ -141,10 +141,8 @@ public class Game implements Disposable {
             if(file.exists() && path.endsWith(".json")) {
                 maps.put(file.name(), file);
                 Logger.logInfo("Game", "Map added: " + file.file().getAbsolutePath());
-            } else {
-                Logger.logError("Game", "Map file not found! " + path);
-                continue;
-            }
+            } else Logger.logError("Game", "Map file not found! " + path);
+
         }
     }
 

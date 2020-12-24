@@ -13,6 +13,8 @@ import com.mygdx.animation.SpriteAnimation;
 import com.mygdx.behavior.Torch;
 import com.mygdx.darkdawn.Logger;
 import com.mygdx.darkdawn.Main;
+import com.mygdx.items.Effect;
+import com.mygdx.items.EffectData;
 import com.mygdx.items.ItemValues;
 import com.mygdx.objects.Behavior;
 import com.mygdx.objects.World;
@@ -46,6 +48,16 @@ public class Player extends Behavior implements EntityEvents {
     private boolean isDead = false;
 
     private ArrayList<Vector3> dashShadow = new ArrayList<>();
+
+    private boolean effectUpdate = false;
+    private static EffectData[] effectData;
+    private ArrayList<Effect> activeEffects = new ArrayList<>();
+    static {
+        effectData = new EffectData[3];
+        effectData[0] = new EffectData("Damage Resistance", true);
+        effectData[1] = new EffectData("Shield", true);
+        effectData[2] = new EffectData("Creeping Darkness", true);
+    }
 
     public Player(WorldValues.BehaviorValues values) {
         super(values, Player.class);
@@ -98,11 +110,27 @@ public class Player extends Behavior implements EntityEvents {
 
 
         if(inventory == null) {
-            inventory = new PlayerInventory(world.game, 30, 20);
-            world.game.chat.inputLine.setY(110);
+            inventory = new PlayerInventory(world.game, this, 30, 20);
+           // world.game.chat.inputLine.setY(110);
+            effectData[0].icon = world.game.resource.getDrawable("shield-protection-icon");
+            effectData[1].icon = world.game.resource.getDrawable("shield-protection-icon");
+            effectData[2].icon = world.game.resource.getDrawable("deadly-effect-icon");
 
-            inventory.setEquipListener((cell, targetSlot) -> {
+            inventory.setEquipListener((cell, targetSlot, old) -> {
                 if (cell != null) {
+                    if(targetSlot >= 0 && targetSlot < 4) {
+                        if (old != null) {
+                            for(Effect e : inventory.hotbarCells[targetSlot].boundEffects) activeEffects.remove(e);
+                            inventory.hotbarCells[targetSlot].boundEffects.clear();
+                        }
+                        if (!cell.itemRoot.data.effects.isEmpty()) {
+                            for (ItemValues.ItemEffect e : cell.itemRoot.data.effects) {
+                                Effect effect = addEffect(e.id, e.duration, e.attribute);
+                                if (effect != null) inventory.hotbarCells[targetSlot].boundEffects.add(effect);
+                            }
+                        }
+                        effectUpdate = true;
+                    }
                    if (targetSlot == 3) {
                        bowTensing = false;
                        blocking = false;
@@ -169,8 +197,13 @@ public class Player extends Behavior implements EntityEvents {
                     }
                 }
                 if (cell == null) parent.removeBehavior("torch");
-                inventory.itemInfo.setDisplay(cell.itemRoot, cell);
-                inventory.itemInfo.setVisible(false);
+                Gdx.app.postRunnable(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(cell != null) inventory.itemInfo.setDisplay(cell.itemRoot, cell);
+                        inventory.itemInfo.setVisible(false);
+                    }
+                });
             });
             inventory.loadInventory(object.getWorld().game);
         }
@@ -207,9 +240,21 @@ public class Player extends Behavior implements EntityEvents {
             return;
         }
 
+        for(int i = 0; i < activeEffects.size(); i++) {
+            if(activeEffects.get(i).getData().id.equals("Creeping Darkness")) {
+                speed = maxSpeed * (1f/activeEffects.get(i).stacked);
+            }
+            if(activeEffects.get(i).getDuration() > 0) {
+                activeEffects.get(i).update(deltaTime);
+                if (activeEffects.get(i).getTime() <= 0) {
+                    activeEffects.remove(i);
+                    effectUpdate = true;
+                }
+            }
+        }
+
         boolean gotHit = animation.getCurrentId().equals("hit-left") ||  animation.getCurrentId().equals("hit-right");
         inventory.setVisible(!world.game.dialog.dialog.isVisible());
-
 
         if(animation.finished("melee-right") || animation.finished("melee-left") || gotHit) {
             attacking = false;
@@ -218,6 +263,9 @@ public class Player extends Behavior implements EntityEvents {
         }
 
         if (!world.game.dialog.dialog.isVisible() && !Main.debug.debugMode && !object.getWorld().game.chat.isShowed() && !inventory.isInventoryOpened()) {
+            if(!Gdx.input.isButtonPressed(Input.Buttons.RIGHT) && blocking) {
+                removeEffect("Shield");
+            }
             blocking = false;
             if(!(Gdx.input.isButtonPressed(Input.Buttons.RIGHT) || attacking || attackPressed) && bowTensing) {
                if(itemAnimations.getFrameIndex() > 0) {
@@ -255,6 +303,7 @@ public class Player extends Behavior implements EntityEvents {
                         animation.play("block-left");
                     else animation.play("block-right");
                     side = 3;
+                    if(!blocking) addEffect("Shield", 0, inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).shield_protection);
                     blocking = true;
                 } else if(inventory.getEquippedItem().data.useType == ItemValues.UseType.BOW) {
                     if (world.getMousePos().x >= parent.getX() * world.getScale()) {
@@ -442,6 +491,7 @@ public class Player extends Behavior implements EntityEvents {
         animation.update(Gdx.graphics.getFramesPerSecond());
         itemAnimations.update(Gdx.graphics.getFramesPerSecond());
         inventory.update();
+        effectUpdate = false;
     }
 
     private boolean isCrit(float chance) {
@@ -510,14 +560,91 @@ public class Player extends Behavior implements EntityEvents {
         isDead = true;
     }
 
+    /**If the duration is 0, the effect needs to get removed by command*/
+    public Effect addEffect(String effectID, float duration, float attribute) {
+        EffectData data = getEffectData(effectID);
+        if(data == null) return null;
+        Effect has = hasEffect(effectID);
+        Effect e = new Effect(data, duration, attribute);
+        effectUpdate = true;
+        if(has != null) {
+            if (!has.stack(e, true, true)) {
+                activeEffects.add(e);
+            }
+        } else  activeEffects.add(e);
+        return e;
+    }
+
+    public EffectData getEffectData(String effectID) {
+        for(EffectData e : effectData) {
+            if(e.id.equals(effectID)) return e;
+        }
+        return null;
+    }
+
+    public Effect hasEffect(String effectID) {
+        for(Effect e : activeEffects) {
+            if(e.getData().id.equals(effectID)) return e;
+        }
+        return null;
+    }
+
+    /**Returns 0, if the player does not have the effect*/
+    public float sumAttributes(String... effectID) {
+        float sum = 0;
+        for(Effect e : activeEffects) {
+            for(String s : effectID) {
+                if (e.getData().id.equals(s)) sum += e.attr;
+            }
+        }
+        return sum;
+    }
+
+    public void removeEffect(String effectID) {
+        for(int i = 0; i < activeEffects.size(); i++) {
+            if(activeEffects.get(i).getData().id.equals(effectID)) {
+                activeEffects.remove(i);
+                i--;
+                effectUpdate = true;
+            }
+        }
+    }
+
+    public void removeEffect(Effect... effects) {
+        for(int i = 0; i < activeEffects.size(); i++) {
+            for(int j = 0; j < effects.length; j++) {
+                if (activeEffects.get(i).equals(effects[j])) {
+                    activeEffects.remove(i);
+                    i--;
+                    effectUpdate = true;
+                }
+            }
+        }
+    }
+
+    public void clearEffects() {
+        activeEffects.clear();
+        effectUpdate = true;
+    }
+
+    public boolean effectUpdated() {
+        return effectUpdate;
+    }
+
+    public ArrayList<Effect> getActiveEffects() {
+        return activeEffects;
+    }
+
     @Override
     public void onHit(WorldObject source, Integer addHealth, Float knockbackX, Float knockbackY) {
         if(source != null || isDead) {
             blocking = false;
+            float resistance = sumAttributes("Damage Resistance", "Shield");
+            addHealth = (int) (addHealth * (1f-resistance));
+
             if(animation.getCurrentId().equals("block-left") || animation.getCurrentId().equals("block-right")) {
                 world.particleSystem.addParticle(new com.mygdx.particles.HitmarkerParticle(parent.getX(), parent.getY(), new com.mygdx.particles.HitmarkerParticlePool("Blocked", true)));
                 parent.applyForce(knockbackX*.5f, knockbackY*.5f);
-                addHealth -= (int) (addHealth * (inventory.getEquippedItem().data.levelStats.get(inventory.getEquippedCell().cellData.level).shield_protection / 100f));
                 blocking = true;
             }
 

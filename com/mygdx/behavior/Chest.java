@@ -8,10 +8,10 @@ import com.mygdx.objects.World;
 import com.mygdx.objects.WorldObject;
 import com.mygdx.objects.WorldValues;
 
+import java.util.ArrayList;
+
 public class Chest extends Behavior {
 
-    public String command = "";
-    private String prevCommand = null;
     public boolean opened = false; //To be able to reset the chest later (Even it seems a bit stupid...)
     private boolean isOpen = false;
     private WorldValues.TriggerValues trigger;
@@ -32,15 +32,25 @@ public class Chest extends Behavior {
             return;
         }
 
-        trigger = new WorldValues.TriggerValues();
-        trigger.keys.add(Input.Keys.F);
-        trigger.messageText = "Open";
-        trigger.tileCheck = false;
-        trigger.scr = command;
-        parent.setTrigger(trigger);
+        if(parent.getTrigger() == null) {
+            trigger = new WorldValues.TriggerValues();
+            if (!opened) trigger.keys.add(Input.Keys.F);
+            trigger.messageText = "Open Chest";
+            parent.setTrigger(trigger);
+        } else {
+            if(!opened) {
+                parent.getTrigger().values.keys.clear();
+                parent.getTrigger().values.keys.add(Input.Keys.F);
+            }
+            parent.getTrigger().values.messageText = "Open Chest";
+        }
 
-        prevCommand = command;
-        parent.setTexture(parent.getRootValues().tileset.get(0).texture);
+        if(!opened) parent.setTexture(parent.getRootValues().tileset.get(0).texture);
+        else {
+            parent.setTexture(parent.getRootValues().tileset.get(1).texture);
+            parent.getTrigger().disable(true);
+        }
+
         if(opened) isOpen = true;
     }
 
@@ -56,20 +66,13 @@ public class Chest extends Behavior {
                 opened = true;
                 isOpen = true;
                 parent.setTexture(parent.getRootValues().tileset.get(1).texture);
-                parent.setTrigger(null);
-            } else {
-                if (!prevCommand.equals(command)) {
-                    parent.getTrigger().setScript(command);
-                    trigger.scr = command;
-                }
-                prevCommand = command;
+                parent.getTrigger().disable(true);
             }
         }
         if(isOpen && !opened) {
             isOpen = false;
             parent.setTexture(parent.getRootValues().tileset.get(0).texture);
-            parent.setTrigger(null);
-            parent.setTrigger(this.trigger);
+            parent.getTrigger().disable(false);
         }
     }
 

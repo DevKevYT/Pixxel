@@ -28,7 +28,7 @@ public interface ItemValues {
     }
 
     public class LevelStats {
-        public int shield_protection = 0; //Percent (100% would block 100% from the enemy)
+        public float shield_protection = 0; //Percent (100% would block 100% from the enemy)
         public int base_damage = 0; //For weapons
         public int crit_damage = 0;
         public float crit_chance = 0; //0 = 0% 1 = 100%
@@ -49,6 +49,20 @@ public interface ItemValues {
         }
     }
 
+    public class ItemEffect {
+        public String id = "";
+        public float attribute = 0;
+        public float duration = 0;
+
+        public ItemEffect copy() {
+            ItemEffect cpy = new ItemEffect();
+            cpy.id = id;
+            cpy.attribute = attribute;
+            cpy.duration = duration;
+            return cpy;
+        }
+    }
+
     public class ItemData {  //Base information about an item
         public String name = "missing"; //The name to display
         public String id = "missing"; //The ID of the item, should be unique
@@ -63,6 +77,7 @@ public interface ItemValues {
         public ArrayList<LevelStats> levelStats = new ArrayList<>(1);
 
         public String description = "";
+        public ArrayList<ItemEffect> effects = new ArrayList<ItemEffect>();
 
         public ItemData() {
             //levelStats.add(new LevelStats());
@@ -81,6 +96,7 @@ public interface ItemValues {
             cpy.levelStats.clear();
             for(LevelStats l : other.levelStats) cpy.levelStats.add(l.copy());
             cpy.description = other.description;
+            for(ItemEffect e : other.effects) cpy.effects.add(e.copy());
             return cpy;
         }
     }

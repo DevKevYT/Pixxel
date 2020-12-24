@@ -83,7 +83,9 @@ public class Movie {
 		if (frameRate == 0) throw new IllegalArgumentException("Frame rate can`t be zero");
 		if (regions.length == 0) throw new IllegalArgumentException("The movie needs to have at least one frame");
 
-		for(String s : regions) this.frames.add(new Sprite(atlas.findRegion(s)));
+		for(String s : regions) {
+			this.frames.add(new Sprite(atlas.findRegion(s)));
+		}
 		this.frameRate = frameRate;
 	}
 

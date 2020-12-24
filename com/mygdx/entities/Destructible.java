@@ -18,7 +18,7 @@ public class Destructible extends Behavior implements EntityEvents {
 
     Sprite[] snippets;
     public int health = 0;
-    public boolean doDisortion = true;
+    public boolean immune = false;
 
     public Destructible(WorldValues.BehaviorValues values) {
         super(values, Destructible.class);
@@ -61,6 +61,10 @@ public class Destructible extends Behavior implements EntityEvents {
 
     @Override
     public void onHit(WorldObject source, Integer addHealth, Float knockbackX, Float knockbackY) {
+        if(immune) {
+            world.particleSystem.addParticle(new HitmarkerParticle(parent.getX(), parent.getY(), new HitmarkerParticlePool("0", true)));
+            return;
+        }
         world.particleSystem.addParticle(new HitmarkerParticle(parent.getX(), parent.getY(), new HitmarkerParticlePool(String.valueOf(addHealth*-1), false)));
         health += addHealth;
         if(health > 0) return;
