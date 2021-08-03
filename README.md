@@ -61,8 +61,6 @@ This script is very useful for some basic level behaviors like
 - Teleporting the player ...
 - Etc ...
 
-So this script is meant to do some basic level behavior,<br>
-so you dont have to write Java behavior classes for everything.
-
+If the default commands are not enough, you can create and add your own
 You can watch a tutorial on how to use this script [here](coming soon ...)<br>
 or read the syntax and download a test program [here](https://github.com/DevKevYT/devscript)
