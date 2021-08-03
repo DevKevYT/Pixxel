@@ -50,4 +50,4 @@ Again, you can store your objects wherever you like, but remember to put the rel
 
 Another program to create and edit objects without creating a file manually is in progress but not finished.<br>
 So you need to create objects manually.<br>
-Explanations and examples can be found [here](../pixxel-doc/assets/Demo/)
+Explanations and examples can be found [here](../pixxel-doc/assets/local/Demo/)
