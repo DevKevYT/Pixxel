@@ -46,8 +46,23 @@ but using the default path /assets/local/worlds/ is a good choice.
 
 ## Object Files
 Every object in your world consists of a simple json file.
-Again, you can store your objects wherever you like, but remember to put the relative path in your game.json file.<br><br>
+Again, you can store your objects wherever you like, but remember to put the relative path in your game.json file.<br>
 
 Another program to create and edit objects without creating a file manually is in progress but not finished.<br>
 So you need to create objects manually.<br>
 Explanations and examples can be found [here](../pixxel-doc/assets/local/Demo/)
+
+## Script syntax and usage
+As mentioned above, this engine also features a script.<br>
+This script is very useful for some basic level behaviors like
+- Opening doors ...
+- Lighting torches ...
+- Entering houses ...
+- Teleporting the player ...
+- Etc ...
+
+So this script is meant to do some basic level behavior,<br>
+so you dont have to write Java behavior classes for everything.
+
+You can watch a tutorial on how to use this script [here](coming soon ...)<br>
+or read the syntax and download a test program [here](https://github.com/DevKevYT/devscript)
