@@ -1,0 +1,43 @@
+{
+  "list": [
+    {
+      "targetID": "wooden_sword", //The target id is autpmatically the blueprint id
+      "category": SWORD,
+      "xp": 200
+      "requirements": [
+        {
+          itemID: "iron_nugget",
+          "amount": 2
+        }
+      ]
+    }
+    {
+      targetID: bow-frame
+      xp: 50
+      requirements: [
+        {
+          itemID: "crooked-stick"
+          amount: 2
+        }
+        {
+          itemID: fusion-crystal
+          amount: 1
+        }
+      ]
+    }
+    {
+      targetID: bow
+      xp: 100
+      requirements: [
+        {
+          itemID: "bow-frame"
+          amount: 1
+        }
+        {
+          itemID: basic-string
+          amount: 2
+        }
+      ]
+    }
+  ]
+}

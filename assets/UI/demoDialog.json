@@ -1,0 +1,43 @@
+{
+  id: "testDialog"
+  rows: 2
+  fontScale: 1.3
+  padX: 10
+  padY: 10
+  frames: [
+    {
+      title: {
+        textAlign: CENTER
+        text: "Counter?!"
+      }
+
+      text: {
+        align: BOTTOM
+        text: "You are wrong.\nGo to the other building!"
+      },
+      "options": {
+        align: CENTER
+        choice: [
+          {
+            text: "WHAT?!",
+            dialog: {
+              rows: 1
+              frames: [
+                {
+                  title: { text: "Counter"}
+                  text: {
+                    fontScale: 4
+                    text: "Jup"
+                  }
+                }
+              ]
+            }
+          }
+          {
+            text: "Ok"
+          }
+        ]
+      }
+    }
+  ]
+}

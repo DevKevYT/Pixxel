@@ -1,0 +1,14 @@
+{
+  "loadType": DEFAULT,
+  "id": torch-item,
+  "texturePath": "*/torch-dark.png", //* represents the current folder location
+  "size": {
+    "x": -0.7,
+    "y": -0.7
+  },
+  "trigger": {
+    "scr": "if ($event == onkey) {give (getobject player) torch 1;remove $self;}",
+    "messageText": "Pick up",
+    "keys": [34]
+  }
+}
