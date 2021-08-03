@@ -1,4 +1,5 @@
-This branch only contains the source code as well as the gradle script files and assets with some readme's.
+This branch only contains the source code as well as the gradle script files and assets with some readme's<br>
+to help you getting an overview before starting.<br>
 To start a project using the existing code refer to the release tags on the right.
 
 # Pixxel
