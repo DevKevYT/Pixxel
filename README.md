@@ -46,4 +46,8 @@ but using the default path /assets/local/worlds/ is a good choice.
 
 ## Object Files
 Every object in your world consists of a simple json file.
-Again, you can store your objects wherever you like, but remember to put the relative path in your game.json file.<br>
+Again, you can store your objects wherever you like, but remember to put the relative path in your game.json file.<br><br>
+
+Another program to create and edit objects without creating a file manually is in progress but not finished.<br>
+So you need to create objects manually.<br>
+Explanations and examples can be found [here](../pixxel-doc/assets/Demo/)
