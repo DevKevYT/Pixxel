@@ -1,3 +1,6 @@
+This branch only contains the source code as well as the gradle script files and assets with some readme's.
+To start a project using the existing code refer to the release tags on the right.
+
 # Pixxel
 LibGDX engine for 2d games.
 
