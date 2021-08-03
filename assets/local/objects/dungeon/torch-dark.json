@@ -1,9 +1,0 @@
-{
-  "loadType": DEFAULT,
-  "id": torch-dark,
-  "texturePath": "*/torch-dark.png", //* represents the current folder location
-  "size": {
-    "x": -1,
-    "y": -1
-  }
-}
