@@ -61,6 +61,7 @@ This script is very useful for some basic level behaviors like
 - Teleporting the player ...
 - Etc ...
 
-If the default commands are not enough, you can create and add your own
+A list of default commands can be found [here](../pixxel-doc/assets/local/Demo/)
+If the default commands are not enough, you can create and add your own.<br>
 You can watch a tutorial on how to use this script [here](coming soon ...)<br>
 or read the syntax and download a test program [here](https://github.com/DevKevYT/devscript)
