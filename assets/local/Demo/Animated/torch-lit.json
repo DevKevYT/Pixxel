@@ -1,0 +1,27 @@
+{
+  "id": torch-lit,
+  "texturePath": "*/torch-lit.png",
+  "size": {
+    "x": -1,
+    "y": -1
+  },
+  "animation": {
+    "framerate": 6,
+    "frames": [
+      {
+        "w": 24,
+        "h": 24
+      },
+      {
+        "x": 24,
+        "w": 24,
+        "h": 24
+      },
+      {
+        "x": 48,
+        "w": 24,
+        "h": 24
+      }
+    ]
+  }
+}

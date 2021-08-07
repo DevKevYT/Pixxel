@@ -1,0 +1,14 @@
+{
+custom: {
+	currentWorld: demo.json
+}
+worlds: [
+	"/local/worlds/demo.json"
+]
+assets: [
+	local/Demo/Animated/torch-lit.json,
+	local/Demo/Atlas/,
+	local/Demo/Simple/,
+	local/Demo/Tileset/
+]
+}
