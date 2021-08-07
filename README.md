@@ -5,7 +5,8 @@ To start a project using the existing code refer to the release tags on the righ
 # Pixxel
 LibGDX engine for 2d games.<br>
 This engine provides some basic game handling features to get you startet on your project.<br>
-Please not that this is not a full AAA type of Engine like Unity to create games within minutes.<br>
+Please note that this is not a full AAA type of Engine like Unity to create games within minutes.<br>
+This engine is supposed to help you getting started for your indie game project using LibGDX.
 
 ## Features
 This engine features
