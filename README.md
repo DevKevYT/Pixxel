@@ -30,6 +30,9 @@ This project requires the following versions:
 - Java source and target compatibillity: 1.8 (build.gradle)
 - gdxVersion 1.9.9 (build.gradle)
 
+The following paragraphs give a brief explanation on the structure.
+For more information, please look at the [Pixxel Wiki](https://github.com/DevKevYT/Pixxel/wiki)
+
 # File structure and how to get along
 Every file that is needed for your game is located in */android/assets/<br>
 
